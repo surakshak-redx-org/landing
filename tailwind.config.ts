@@ -1,3 +1,4 @@
+import colors from 'tailwindcss/colors';
 import type { Config } from 'tailwindcss';
 
 const config: Config = {
@@ -16,7 +17,10 @@ const config: Config = {
         'forest-green': '#389E0D',
         'off-white': '#F5F5F5',
         ink: '#141414',
-        stone: '#595959',
+        // Merge with Tailwind's default stone scale (stone-50…stone-950, used
+        // for muted text/backgrounds on dark sections) — a bare string here
+        // would silently replace the whole scale and break every stone-N class.
+        stone: { ...colors.stone, DEFAULT: '#595959' },
         'near-black': '#0A0A0A',
         charcoal: '#1A1A1A',
       },

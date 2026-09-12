@@ -22,24 +22,6 @@ export default function About(): React.JSX.Element {
             way to call for help when it matters most? Every feature in Surakshak exists to answer
             that question.
           </p>
-
-          <div className="mt-8 flex items-center gap-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-purple-100 text-lg font-bold text-shakti-purple">
-              D
-            </div>
-            <div>
-              <p className="text-sm font-semibold text-ink">
-                Dhruv — Software Developer, CE 2025 passout
-              </p>
-              <p className="text-xs text-stone">
-                Guiding the technical architecture and development process.
-              </p>
-            </div>
-          </div>
-
-          <p className="mt-8 text-sm text-stone">
-            Open to contributors — designers, developers, and community builders from KJSIT.
-          </p>
         </div>
 
         <div className="glass rounded-3xl bg-near-black p-10 text-center">
