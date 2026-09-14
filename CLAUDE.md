@@ -15,6 +15,45 @@ Read this before doing anything.
 - Tailwind CSS + Framer Motion
 - Radix UI for accessible components
 
+## Repository Structure
+
+```
+landing/
+├── .github/
+│   └── workflows/
+│       └── pr-checks.yml       # typecheck/lint/prettier/build on PRs
+├── public/
+│   └── robots.txt
+├── src/
+│   ├── app/                    # Next.js App Router
+│   │   ├── layout.tsx
+│   │   ├── page.tsx
+│   │   ├── sitemap.ts
+│   │   └── globals.css
+│   ├── components/
+│   │   ├── sections/           # page sections (Hero, Features, FAQ, ...)
+│   │   └── ui/                 # shared primitives (Button, Badge)
+│   ├── constants/
+│   │   └── index.ts            # SITE config, links, copy constants
+│   ├── hooks/
+│   │   └── useScrollAnimation.ts
+│   └── lib/
+│       └── utils.ts
+├── vercel.json
+├── next.config.ts
+├── tailwind.config.ts
+├── tsconfig.json
+├── eslint.config.mjs
+├── CLAUDE.md
+├── AGENTS.md
+└── README.md
+```
+
+Deploys run through Vercel's native Git integration (not GitHub Actions):
+`production` branch → Production deployment; `staging` branch → Preview
+deployment on its own stable `*.vercel.app` domain; `develop` → no deployment
+(Ignored Build Step skips it in Vercel project settings).
+
 ## Absolute Rules
 
 1. No `any` type
