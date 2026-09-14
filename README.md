@@ -20,8 +20,11 @@ npm run dev
 
 ## Deploy
 
-Vercel deploys via GitHub Actions on push to `staging` and `production`.
-Add `VERCEL_TOKEN` to GitHub secrets.
+Deploys run through Vercel's native Git integration, not GitHub Actions.
+
+- `production` branch → Production deployment
+- `staging` branch → Preview deployment on its own stable `*.vercel.app` domain
+- `develop` branch → no deployment (excluded via the project's Ignored Build Step)
 
 ## Update Play Store / App Store links
 
