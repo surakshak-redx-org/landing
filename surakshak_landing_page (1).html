@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Surakshak — Women's safety technology designed for India.">
+<title>Surakshak — हर कदम, सुरक्षित.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0b1020;--ink:#101426;--muted:#667085;--indigo:#5b4ce6;--violet:#7c3aed;--rose:#f43f5e;--bg:#f7f8fc;--card:#fff;--line:#e8eaf1;--shadow:0 20px 60px rgba(16,20,38,.10)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6}.container{width:min(1160px,92%);margin:auto}
+nav{position:fixed;z-index:50;top:14px;left:50%;transform:translateX(-50%);width:min(1160px,92%);padding:12px 16px;border:1px solid rgba(255,255,255,.55);background:rgba(255,255,255,.78);backdrop-filter:blur(18px);border-radius:18px;display:flex;align-items:center;gap:24px;box-shadow:0 8px 35px rgba(15,23,42,.08)}
+.logo{font-weight:800;font-family:Manrope;font-size:20px;display:flex;gap:9px;align-items:center;margin-right:auto}.shield{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;background:linear-gradient(135deg,var(--indigo),var(--violet));color:#fff}
+.nav-links{display:flex;gap:24px;align-items:center}.nav-links a{color:#475467;text-decoration:none;font-size:13px;font-weight:600}.nav-links a:hover{color:var(--indigo)}.nav-actions{display:flex;gap:9px;align-items:center}.btn{border:0;text-decoration:none;cursor:pointer;border-radius:12px;padding:12px 17px;font-weight:700;font-size:13px;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:.25s}.btn:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(91,76,230,.18)}.primary{background:var(--indigo);color:#fff}.danger{background:var(--rose);color:#fff}.ghost{background:#fff;color:#344054;border:1px solid var(--line)}
+.menu{display:none;background:none;border:0;font-size:23px}
+.hero{padding:170px 0 90px;background:radial-gradient(circle at 78% 20%,rgba(124,58,237,.13),transparent 30%),radial-gradient(circle at 15% 10%,rgba(91,76,230,.10),transparent 28%),#f8f9fd;overflow:hidden}.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center}.eyebrow{display:inline-flex;align-items:center;gap:8px;background:#eeecff;color:#5145c5;border:1px solid #ddd9ff;padding:7px 11px;border-radius:99px;font-size:12px;font-weight:800}.hero h1{font-family:Manrope;font-size:clamp(46px,6vw,78px);line-height:1.02;letter-spacing:-3px;margin:18px 0 18px}.gradient{background:linear-gradient(100deg,var(--indigo),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{font-size:18px;color:#667085;max-width:620px}.ticks{display:flex;flex-wrap:wrap;gap:9px;margin:22px 0}.tick{font-size:12px;font-weight:700;color:#475467;background:#fff;border:1px solid var(--line);border-radius:99px;padding:7px 11px}.hero-cta{display:flex;gap:10px;flex-wrap:wrap}
+.phone-wrap{position:relative;min-height:520px;display:grid;place-items:center}.glow{position:absolute;width:390px;height:390px;border-radius:50%;background:radial-gradient(circle,rgba(124,58,237,.24),transparent 65%);filter:blur(5px)}.phone{position:relative;width:270px;height:535px;border:9px solid #111827;border-radius:40px;background:#f8f9ff;box-shadow:0 35px 70px rgba(15,23,42,.25);overflow:hidden;animation:float 5s ease-in-out infinite}.notch{height:25px;width:105px;background:#111827;border-radius:0 0 18px 18px;margin:auto}.appbar{padding:20px 18px 10px;font-weight:800;display:flex;justify-content:space-between}.status{margin:12px 15px;padding:13px;border-radius:16px;background:#e9e7ff;color:#4238a3;font-size:11px;font-weight:700}.sos{margin:28px auto;width:155px;height:155px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#ff5470,var(--rose));color:#fff;font-size:28px;font-weight:900;box-shadow:0 0 0 14px rgba(244,63,94,.08),0 18px 45px rgba(244,63,94,.28);animation:pulse 2.4s infinite}.contact-row{margin:12px 15px;padding:13px;border-radius:15px;background:#fff;border:1px solid #eee;display:flex;justify-content:space-between;font-size:11px}.contact-row b{font-size:12px}.emergency{background:var(--navy);color:#fff;padding:30px 0}.em-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}.em{padding:15px;border:1px solid rgba(255,255,255,.1);border-radius:15px;background:rgba(255,255,255,.06)}.em strong{font-size:22px;display:block}.em span{font-size:11px;color:#aeb5c5}
+section{padding:100px 0}.section-head{max-width:720px;margin-bottom:45px}.section-head .label{color:var(--indigo);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1.3px}.section-head h2{font-family:Manrope;font-size:clamp(32px,4vw,50px);line-height:1.08;letter-spacing:-1.8px;margin:10px 0}.section-head p{color:var(--muted)}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.pillar,.feature,.privacy-card,.faq,.step,.platform{background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:0 10px 35px rgba(16,24,40,.04)}.pillar{padding:28px}.icon{width:48px;height:48px;border-radius:15px;background:#eeecff;color:var(--indigo);display:grid;place-items:center;font-size:22px;margin-bottom:20px}.pillar h3,.feature h3{margin:0 0 8px;font-family:Manrope}.pillar p,.feature p{margin:0;color:var(--muted);font-size:14px}
+.features{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.feature{padding:24px;transition:.25s}.feature:hover{transform:translateY(-5px);box-shadow:var(--shadow)}.feature .icon{width:42px;height:42px;font-size:18px}
+.demo{background:var(--navy);color:#fff}.demo .section-head p{color:#aeb5c5}.flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr auto 1fr;align-items:center;gap:8px}.flow-card{text-align:center;padding:22px 8px;border:1px solid rgba(255,255,255,.1);border-radius:20px;background:rgba(255,255,255,.05)}.flow-card b{display:block;font-size:13px}.flow-card small{color:#aeb5c5}.arrow{text-align:center;color:#8d82ff;font-size:25px}
+.platforms{display:grid;grid-template-columns:1fr 1fr;gap:20px}.platform{padding:30px}.platform h3{font-family:Manrope;font-size:24px}.platform ul{padding-left:20px;color:#667085}.platform li{margin:9px 0}
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.step{padding:26px}.num{font-size:12px;color:var(--indigo);font-weight:900}.step h3{font-family:Manrope}.step p{font-size:14px;color:var(--muted)}
+.language{background:linear-gradient(135deg,#efedff,#f8f9fd)}.langs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.lang{padding:30px;background:#fff;border:1px solid var(--line);border-radius:22px}.lang .native{font-size:25px;font-weight:800;font-family:Manrope}.lang small{color:var(--muted)}
+.privacy{display:grid;grid-template-columns:.9fr 1.1fr;gap:45px;align-items:center}.privacy-card{padding:30px}.privacy-list{display:grid;grid-template-columns:1fr 1fr;gap:13px}.privacy-list div{padding:14px;border-radius:15px;background:#f8f9fc;font-size:13px;font-weight:600}
+.download{padding:90px 0;background:linear-gradient(135deg,var(--indigo),var(--violet));color:#fff}.download-inner{display:flex;align-items:center;justify-content:space-between;gap:30px}.download h2{font-family:Manrope;font-size:clamp(35px,5vw,58px);line-height:1.05;margin:0 0 12px}.download p{color:#e5e2ff}.download-buttons{display:flex;gap:10px;flex-wrap:wrap}.download .btn{background:#fff;color:#3325a5}.download .btn.secondary{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.3)}.eyebrow-light{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.25);color:#fff}
+.faq-list{border:1px solid var(--line);border-radius:24px;background:var(--card);box-shadow:0 10px 35px rgba(16,24,40,.04);overflow:hidden}.faq-item{border-bottom:1px solid var(--line)}.faq-item:last-child{border-bottom:0}.faq-item button{width:100%;text-align:left;padding:20px;background:#fff;border:0;font-weight:700;display:flex;justify-content:space-between;cursor:pointer}.faq-item p{display:none;padding:0 20px 20px;margin:0;color:var(--muted);font-size:14px}.faq-item.open p{display:block}
+.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.badge-soon{position:absolute;top:-9px;right:-9px;background:var(--rose);color:#fff;font-size:10px;font-weight:800;padding:3px 8px;border-radius:99px;box-shadow:0 4px 10px rgba(0,0,0,.2)}.download-buttons .btn{position:relative}
+footer{background:#070a13;color:#fff;padding:60px 0 25px}.footer-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:35px}.footer-grid h4{margin-top:0}.footer-grid a{display:block;color:#9ca3af;text-decoration:none;font-size:13px;margin:9px 0}.footer-desc{color:#9ca3af;font-size:13px;max-width:300px}.copyright{border-top:1px solid rgba(255,255,255,.1);margin-top:40px;padding-top:20px;color:#7d8595;font-size:12px;display:flex;justify-content:space-between}.copyright a{color:#7d8595;text-decoration:underline}.copyright a:hover{color:#fff}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}.reveal.visible{opacity:1;transform:none}
+.hero .subtitle{font-size:.48em;letter-spacing:-1px}
+.label-light{color:#9c91ff}
+.mobile-download{display:none}
+@keyframes float{50%{transform:translateY(-10px)}}@keyframes pulse{50%{box-shadow:0 0 0 25px rgba(244,63,94,.03),0 18px 45px rgba(244,63,94,.28)}}
+@media(max-width:900px){nav{flex-wrap:wrap}.nav-links,.nav-actions{display:none;width:100%}.nav-links.open,.nav-actions.open{display:flex}.nav-links.open{flex-direction:column;align-items:flex-start;gap:14px;padding-top:16px;border-top:1px solid var(--line);margin-top:12px}.nav-actions.open{flex-direction:column;align-items:stretch;gap:9px;padding-top:14px}.menu{display:block}.hero-grid,.privacy{grid-template-columns:1fr}.hero{padding-top:135px}.phone-wrap{min-height:480px}.features{grid-template-columns:repeat(2,1fr)}.em-grid{grid-template-columns:repeat(3,1fr)}.flow{grid-template-columns:1fr}.arrow{transform:rotate(90deg)}.timeline,.pillars,.langs,.platforms{grid-template-columns:1fr 1fr}.download-inner{display:block}.download-buttons{margin-top:25px}.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){section{padding:70px 0}.hero h1{letter-spacing:-2px}.hero p{font-size:16px}.phone{transform:scale(.88)}.features,.pillars,.timeline,.langs,.platforms,.footer-grid,.privacy-list{grid-template-columns:1fr}.em-grid{grid-template-columns:repeat(2,1fr)}.copyright{display:block}.copyright span{display:block;margin-top:8px}.mobile-download{display:flex;position:fixed;z-index:45;bottom:12px;left:12px;right:12px;background:rgba(11,16,32,.92);backdrop-filter:blur(14px);padding:9px;border-radius:15px;justify-content:space-between;align-items:center;box-shadow:0 15px 35px rgba(0,0,0,.25)}.mobile-download span{font-size:12px;color:#fff;font-weight:700}.mobile-download .btn{padding:9px 13px}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="#home"><span class="shield" aria-hidden="true">🛡</span>Surakshak</a>
+  <div id="nav-links" class="nav-links"><a href="#safety">Safety</a><a href="#features">Features</a><a href="#how">How It Works</a><a href="#languages">Languages</a><a href="#about">About</a></div>
+  <div class="nav-actions"><a class="btn danger" href="#emergency">Emergency</a><a class="btn primary" href="#download">Download App</a></div>
+  <button class="menu" id="menuBtn" onclick="toggleMenu()" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links nav-actions">☰</button>
+</nav>
+
+<header class="hero" id="home">
+<div class="container hero-grid">
+<div class="reveal">
+<span class="eyebrow"><span aria-hidden="true">🛡️</span> Built for Women's Safety in India</span>
+<h1>हर कदम, <span class="gradient">सुरक्षित.</span><br><small class="subtitle">Every Step, Protected.</small></h1>
+<p>One safety app for emergencies, journeys, location sharing and trusted support — designed for India and built to help when connectivity is limited.</p>
+<div class="ticks"><span class="tick">✓ Free to Download</span><span class="tick">✓ No Ads</span><span class="tick">✓ Offline-first</span><span class="tick">✓ English • हिन्दी • मराठी</span></div>
+<div class="hero-cta"><a class="btn primary" href="#download">Download Surakshak →</a><a class="btn ghost" href="#features">Explore Features ↓</a></div>
+</div>
+<div class="phone-wrap reveal">
+<div class="glow"></div><div class="phone">
+<div class="notch"></div><div class="appbar"><span>Surakshak</span><span aria-hidden="true">⌁</span></div>
+<div class="status">● Safety status: Protected</div>
+<div class="sos">SOS</div>
+<div class="contact-row"><span><b>Mom</b><br>Emergency Contact</span><span>✓</span></div>
+<div class="contact-row"><span><b>Live Location</b><br>Ready to share</span><span>⌖</span></div>
+</div></div>
+</div>
+</header>
+
+<section class="emergency" id="emergency">
+<div class="container"><div style="font-weight:800;margin-bottom:15px">Emergency Help — Always Available</div><div class="em-grid">
+<div class="em"><strong>112</strong><span>National Emergency</span></div><div class="em"><strong>100</strong><span>Police</span></div><div class="em"><strong>108</strong><span>Ambulance</span></div><div class="em"><strong>1091</strong><span>Women Helpline</span></div><div class="em"><strong>181</strong><span>Mahila Helpline</span></div><div class="em"><strong>1098</strong><span>Child Helpline</span></div>
+</div></div>
+</section>
+
+<section id="safety"><div class="container">
+<div class="section-head reveal"><div class="label">Why Surakshak?</div><h2>Safety shouldn't depend on luck.</h2><p>Designed for real emergencies — when time, connectivity and attention are limited.</p></div>
+<div class="pillars"><div class="pillar reveal"><div class="icon" aria-hidden="true">◉</div><h3>Offline First</h3><p>Core emergency pathways are designed around situations where internet connectivity isn't available.</p></div><div class="pillar reveal"><div class="icon" aria-hidden="true">⚡</div><h3>Fast Response</h3><p>Reach your emergency workflow quickly through supported phone actions and clear controls.</p></div><div class="pillar reveal"><div class="icon" aria-hidden="true">🇮🇳</div><h3>India First</h3><p>Built around Indian emergency numbers, languages and everyday safety needs.</p></div></div>
+</div></section>
+
+<section id="features"><div class="container">
+<div class="section-head reveal"><div class="label">Safety toolkit</div><h2>Everything you need when it matters most.</h2><p>A focused set of tools for emergencies, journeys, awareness and support.</p></div>
+<div class="features">
+<div class="feature reveal"><div class="icon" aria-hidden="true">🆘</div><h3>One-Tap / Triple-Tap SOS</h3><p>Trigger your emergency workflow quickly through supported actions.</p></div>
+<div class="feature reveal"><div class="icon" aria-hidden="true">⌖</div><h3>Live Location</h3><p>Share your location with trusted contacts when you need support.</p></div>
+<div class="feature reveal"><div class="icon" aria-hidden="true">🛣</div><h3>Safe Journey</h3><p>Set a destination and use check-ins to stay connected during travel.</p></div>
+<div class="feature reveal"><div class="icon" aria-hidden="true">👥</div><h3>Community Safety</h3><p>Share useful safety warnings and awareness with the community.</p></div>
+<div class="feature reveal"><div class="icon" aria-hidden="true">🗺</div><h3>Unsafe Area Map</h3><p>Understand community-reported safety concerns around you.</p></div>
+<div class="feature reveal"><div class="icon" aria-hidden="true">⚖</div><h3>Know Your Rights</h3><p>Access important women's laws and guidance in simple language.</p></div>
+<div class="feature reveal"><div class="icon" aria-hidden="true">◉</div><h3>Silent Recording</h3><p>Record evidence discreetly and keep control over sharing.</p></div>
+<div class="feature reveal"><div class="icon" aria-hidden="true">▦</div><h3>Disguise Mode</h3><p>Switch to a calculator-style interface when discretion is needed.</p></div>
+</div></div></section>
+
+<section class="demo" id="how"><div class="container">
+<div class="section-head reveal"><div class="label label-light">Emergency flow</div><h2>See what happens when you need help.</h2><p>One clear sequence turns an urgent moment into a structured response.</p></div>
+<div class="flow"><div class="flow-card reveal"><b>1. SOS Trigger</b><small>Emergency action</small></div><div class="arrow">→</div><div class="flow-card reveal"><b>2. Detection</b><small>Start response</small></div><div class="arrow">→</div><div class="flow-card reveal"><b>3. Location</b><small>Retrieve position</small></div><div class="arrow">→</div><div class="flow-card reveal"><b>4. Contacts Alerted</b><small>Trusted people notified</small></div><div class="arrow">→</div><div class="flow-card reveal"><b>5. Response</b><small>Help can begin</small></div></div>
+</div></section>
+
+<section><div class="container">
+<div class="section-head reveal"><div class="label">Platform</div><h2>Built around the way your phone works.</h2></div>
+<div class="platforms"><div class="platform reveal"><h3>Android</h3><ul><li>Silent SMS support</li><li>Direct calling capabilities</li><li>Background shake detection</li><li>Offline-oriented functionality</li><li>Parallel emergency alerts</li></ul></div><div class="platform reveal"><h3>iPhone</h3><ul><li>Pre-filled SMS</li><li>Pre-filled emergency calling</li><li>Offline-oriented functionality</li><li>Same core safety experience</li><li>Works within iOS platform limitations</li></ul></div></div>
+</div></section>
+
+<section><div class="container">
+<div class="section-head reveal"><div class="label">Simple setup</div><h2>Four steps. Then you're protected.</h2></div>
+<div class="timeline"><div class="step reveal"><div class="num">01</div><h3>Download & Sign Up</h3><p>Install Surakshak and create your safety profile.</p></div><div class="step reveal"><div class="num">02</div><h3>Add Contacts</h3><p>Choose the people you trust in an emergency.</p></div><div class="step reveal"><div class="num">03</div><h3>Choose Language</h3><p>Use English, हिन्दी or मराठी.</p></div><div class="step reveal"><div class="num">04</div><h3>You're Protected</h3><p>Keep your emergency tools ready whenever you need them.</p></div></div>
+</div></section>
+
+<section class="language" id="languages"><div class="container">
+<div class="section-head reveal"><div class="label">Inclusive by design</div><h2>Safety speaks your language.</h2></div>
+<div class="langs"><div class="lang reveal"><div class="native">English</div><p>SOS alert sent to your emergency contacts.</p><small>Clear and direct emergency guidance.</small></div><div class="lang reveal"><div class="native">हिन्दी</div><p>आपका एसओएस अलर्ट आपके आपातकालीन संपर्कों को भेज दिया गया है।</p><small>सरल और स्पष्ट सुरक्षा मार्गदर्शन।</small></div><div class="lang reveal"><div class="native">मराठी</div><p>तुमचा एसओएस अलर्ट तुमच्या आपत्कालीन संपर्कांना पाठवला गेला आहे.</p><small>सोपे आणि स्पष्ट सुरक्षा मार्गदर्शन.</small></div></div>
+</div></section>
+
+<section><div class="container privacy">
+<div class="section-head reveal"><div class="label">Privacy & trust</div><h2>Your safety. Your data. Your control.</h2><p>Privacy should be part of the product — not an afterthought.</p></div>
+<div class="privacy-card reveal"><div class="privacy-list"><div><span aria-hidden="true">🛡</span> User-controlled sharing</div><div><span aria-hidden="true">📍</span> Clear location permissions</div><div><span aria-hidden="true">👥</span> Trusted contacts you choose</div><div><span aria-hidden="true">🔐</span> Responsible data handling</div><div><span aria-hidden="true">⚙</span> Transparent permissions</div><div><span aria-hidden="true">🎙</span> Evidence sharing by choice</div></div></div>
+</div></section>
+
+<section id="about"><div class="container">
+<div class="section-head reveal"><div class="label">The people behind it</div><h2>Built by students. Designed for real life.</h2><p>Surakshak was built by students at K.J. Somaiya Institute of Technology through REDX Club — a student-led technology community focused on solutions that matter.</p></div>
+<div class="pillar reveal"><div class="icon" aria-hidden="true">✦</div><h3>REDX Club</h3><p>K.J. Somaiya Institute of Technology</p></div>
+</div></section>
+
+<section><div class="container"><div class="section-head reveal"><div class="label">FAQ</div><h2>Questions, answered.</h2></div>
+<div class="faq-list reveal">
+<div class="faq-item"><button onclick="faq(this)" aria-expanded="false" aria-controls="faq-a1">Is Surakshak free to download? <span aria-hidden="true">+</span></button><p id="faq-a1">Surakshak is free to download. Final in-app pricing details, if any, will match what's shipped in the deployed app.</p></div>
+<div class="faq-item"><button onclick="faq(this)" aria-expanded="false" aria-controls="faq-a2">Does it work without internet? <span aria-hidden="true">+</span></button><p id="faq-a2">Surakshak is designed with offline-oriented emergency capabilities. Exact device behaviour depends on the implemented app features and platform.</p></div>
+<div class="faq-item"><button onclick="faq(this)" aria-expanded="false" aria-controls="faq-a3">Which languages are supported? <span aria-hidden="true">+</span></button><p id="faq-a3">English, Hindi and Marathi are presented as the core supported languages.</p></div>
+<div class="faq-item"><button onclick="faq(this)" aria-expanded="false" aria-controls="faq-a4">Does SOS work on iPhone? <span aria-hidden="true">+</span></button><p id="faq-a4">iPhone functionality operates within iOS platform limitations, with supported calling and messaging workflows.</p></div>
+</div></div></section>
+
+<section class="download" id="download"><div class="container download-inner reveal">
+<div><div class="eyebrow eyebrow-light"><span aria-hidden="true">🛡️</span> Your safety shouldn't wait.</div><h2>Keep help within reach.</h2><p>Download Surakshak and keep your emergency support ready.</p></div>
+<div class="download-buttons">
+<a class="btn" id="playBtn" href="#" onclick="return comingSoon('Play Store')"><span aria-hidden="true">▶</span> Get it on Google Play<span class="badge-soon">Coming Soon</span></a>
+<a class="btn secondary" id="appStoreBtn" href="#" onclick="return comingSoon('App Store')"><span aria-hidden="true"></span> Download on the App Store<span class="badge-soon">Coming Soon</span></a>
+</div>
+</div></section>
+
+<footer><div class="container"><div class="footer-grid">
+<div><div class="logo"><span class="shield" aria-hidden="true">🛡</span>Surakshak</div><p class="footer-desc">हर कदम, सुरक्षित.<br>Built for women's safety in India.</p></div>
+<div><h4>Emergency</h4><a href="#emergency">112 · National</a><a href="#emergency">100 · Police</a><a href="#emergency">108 · Ambulance</a><a href="#emergency">1091 · Women</a></div>
+<div><h4>Features</h4><a href="#features">SOS</a><a href="#features">Live Location</a><a href="#features">Safe Journey</a><a href="#features">Community</a></div>
+<div><h4>Explore</h4><a href="#how">How It Works</a><a href="#languages">Languages</a><a href="#about">About REDX Club</a><a href="#download">Download</a></div>
+</div><div class="copyright"><span>© 2026 REDX Club, K.J. Somaiya Institute of Technology</span><span><a href="#privacy">Privacy</a> · <a href="#terms">Terms</a> · <a href="mailto:hello@redxclub.org">Contact</a></span></div></div></footer>
+
+<div class="mobile-download"><span><span aria-hidden="true">🛡️</span> Get Surakshak</span><a class="btn primary" href="#download">Download App</a></div>
+
+<script>
+// Accounts not yet set up — update these once Play Store / App Store listings are live.
+const PLAY_STORE_URL="#";
+const APP_STORE_URL="#";
+function comingSoon(store){return false}
+function faq(b){const item=b.parentElement;const isOpen=item.classList.toggle("open");b.setAttribute("aria-expanded",isOpen?"true":"false");b.querySelector("span").textContent=isOpen?"−":"+"}
+function toggleMenu(){const links=document.getElementById("nav-links");const actions=document.querySelector(".nav-actions");const btn=document.getElementById("menuBtn");const open=links.classList.toggle("open");actions.classList.toggle("open",open);btn.setAttribute("aria-expanded",open?"true":"false")}
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("visible")}),{threshold:.12});document.querySelectorAll(".reveal").forEach(x=>obs.observe(x));
+</script>
+</body>
+</html>
