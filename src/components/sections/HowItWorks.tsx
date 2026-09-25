@@ -33,7 +33,7 @@ export default function HowItWorks(): React.JSX.Element {
           </p>
 
           <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
-            Four steps. Then you're protected.
+            Four steps. Then you&apos;re protected.
           </h2>
 
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-[#aeb5c5] sm:text-lg">
