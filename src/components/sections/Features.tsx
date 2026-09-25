@@ -15,7 +15,6 @@ export default function Features(): React.JSX.Element {
   return (
     <section id="features" className="bg-[#f7f8fc] py-24">
       <div className="mx-auto w-[92%] max-w-6xl">
-
         {/* Section Heading */}
         <div className="mx-auto mb-12 max-w-3xl text-center">
           <p className="text-xs font-extrabold uppercase tracking-[1.3px] text-[#5b4ce6]">
@@ -27,8 +26,8 @@ export default function Features(): React.JSX.Element {
           </h2>
 
           <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#667085] sm:text-lg">
-            A focused set of tools for emergencies, journeys,
-            awareness and support.
+            A focused set of tools for emergencies, journeys, awareness and
+            support.
           </p>
         </div>
 
@@ -84,7 +83,6 @@ export default function Features(): React.JSX.Element {
             </motion.div>
           ))}
         </motion.div>
-
       </div>
     </section>
   );
