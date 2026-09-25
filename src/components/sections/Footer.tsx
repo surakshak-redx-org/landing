@@ -3,19 +3,38 @@ import { SITE } from '@/constants';
 const FOOTER_COLUMNS = [
   {
     title: 'Emergency Numbers',
-    links: ['112', '100', '108', '1091', '181'],
+    links: [
+      { label: '112 — Emergency', href: 'tel:112' },
+      { label: '100 — Police', href: 'tel:100' },
+      { label: '108 — Ambulance', href: 'tel:108' },
+      { label: '1091 — Women Helpline', href: 'tel:1091' },
+      { label: '181 — Women Helpline', href: 'tel:181' },
+    ],
   },
   {
     title: 'Features',
-    links: ['SOS', 'Live Location', 'Safe Journey', 'Community', 'Laws'],
+    links: [
+      { label: 'SOS', href: '#features' },
+      { label: 'Live Location', href: '#features' },
+      { label: 'Safe Journey', href: '#how-it-works' },
+      { label: 'Community', href: '#features' },
+      { label: 'Laws', href: '#features' },
+    ],
   },
   {
     title: 'About',
-    links: [SITE.clubName, SITE.collegeName, 'GitHub'],
+    links: [
+      { label: SITE.clubName, href: '#' },
+      { label: SITE.collegeName, href: '#' },
+      { label: 'GitHub', href: SITE.githubUrl },
+    ],
   },
   {
     title: 'Download',
-    links: ['Play Store (Coming Soon)', 'App Store (Coming Soon)'],
+    links: [
+      { label: 'Google Play — Coming Soon', href: '#' },
+      { label: 'App Store — Coming Soon', href: '#' },
+    ],
   },
 ] as const;
 
@@ -31,6 +50,25 @@ export default function Footer(): React.JSX.Element {
   return (
     <footer className="bg-near-black py-16">
       <div className="mx-auto max-w-6xl px-6">
+        <div className="mb-10 rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8">
+          <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
+            <div>
+              <p className="text-xl font-bold text-white">Your safety should never wait.</p>
+              <p className="mt-2 max-w-xl text-sm leading-6 text-stone-400">
+                Stay connected, access emergency support quickly, and keep Surakshak within reach
+                whenever you need it.
+              </p>
+            </div>
+
+            <a
+              href="#download"
+              className="shrink-0 rounded-full bg-white px-5 py-3 text-sm font-semibold text-near-black transition-transform hover:scale-105"
+            >
+              Download App
+            </a>
+          </div>
+        </div>
+
         <div className="flex flex-col items-start justify-between gap-6 border-b border-white/10 pb-10 sm:flex-row sm:items-center">
           <div>
             <p className="flex items-center gap-2 text-lg font-bold text-white">
@@ -39,23 +77,32 @@ export default function Footer(): React.JSX.Element {
             </p>
             <p className="mt-1 font-devanagari text-sm text-stone-500">हर कदम, सुरक्षित</p>
           </div>
+
           <a
             href={SITE.githubUrl}
-            className="text-stone-400 transition-colors hover:text-white"
-            aria-label="GitHub"
+            target="_blank"
+            rel="noreferrer"
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 text-stone-400 transition-colors hover:border-white/30 hover:text-white"
+            aria-label="Visit Surakshak on GitHub"
           >
             <GitHubIcon />
           </a>
         </div>
 
-        <div className="grid grid-cols-2 gap-8 py-10 sm:grid-cols-4">
+        <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-10 sm:grid-cols-4">
           {FOOTER_COLUMNS.map((column) => (
             <div key={column.title}>
               <p className="text-sm font-semibold text-white">{column.title}</p>
-              <ul className="mt-4 space-y-2">
+
+              <ul className="mt-4 space-y-3">
                 {column.links.map((link) => (
-                  <li key={link} className="text-sm text-stone-400">
-                    {link}
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      className="text-sm text-stone-400 transition-colors hover:text-white"
+                    >
+                      {link.label}
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -63,10 +110,11 @@ export default function Footer(): React.JSX.Element {
           ))}
         </div>
 
-        <div className="flex flex-col items-start justify-between gap-2 border-t border-white/10 pt-8 text-xs text-stone-500 sm:flex-row sm:items-center">
+        <div className="flex flex-col items-start justify-between gap-3 border-t border-white/10 pt-8 text-xs text-stone-500 sm:flex-row sm:items-center">
           <p>
             © 2026 {SITE.clubName}, {SITE.collegeName}. All rights reserved.
           </p>
+
           <p>Built with ❤️ for women&apos;s safety in India</p>
         </div>
       </div>
