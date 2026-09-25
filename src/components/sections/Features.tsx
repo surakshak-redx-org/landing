@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 
 import {
   FADE_UP,
   STAGGER_CONTAINER,
   useScrollAnimation,
-} from '@/hooks/useScrollAnimation';
-import { FEATURES } from '@/constants';
+} from "@/hooks/useScrollAnimation";
+import { FEATURES } from "@/constants";
 
 export default function Features(): React.JSX.Element {
   const { ref, isInView } = useScrollAnimation();
@@ -15,7 +15,6 @@ export default function Features(): React.JSX.Element {
   return (
     <section id="features" className="bg-[#f7f8fc] py-24">
       <div className="mx-auto w-[92%] max-w-6xl">
-
         {/* Section Heading */}
         <div className="mx-auto mb-12 max-w-3xl text-center">
           <p className="text-xs font-extrabold uppercase tracking-[1.3px] text-[#5b4ce6]">
@@ -27,8 +26,8 @@ export default function Features(): React.JSX.Element {
           </h2>
 
           <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#667085] sm:text-lg">
-            A focused set of tools for emergencies, journeys,
-            awareness and support.
+            A focused set of tools for emergencies, journeys, awareness and
+            support.
           </p>
         </div>
 
@@ -37,7 +36,7 @@ export default function Features(): React.JSX.Element {
           ref={ref}
           variants={STAGGER_CONTAINER}
           initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
+          animate={isInView ? "visible" : "hidden"}
           className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4"
         >
           {FEATURES.map((feature) => (
@@ -55,9 +54,7 @@ export default function Features(): React.JSX.Element {
               </div>
 
               {/* Title */}
-              <h3 className="mb-2 font-bold text-[#101426]">
-                {feature.title}
-              </h3>
+              <h3 className="mb-2 font-bold text-[#101426]">{feature.title}</h3>
 
               {/* Subtitle */}
               <p className="mb-3 text-sm font-semibold text-[#5b4ce6]">
@@ -70,7 +67,7 @@ export default function Features(): React.JSX.Element {
               </p>
 
               {/* Platform Support */}
-              {'platform' in feature && feature.platform && (
+              {"platform" in feature && feature.platform && (
                 <div className="mt-5 flex flex-wrap gap-2">
                   <span className="rounded-full bg-green-50 px-3 py-1.5 text-xs font-semibold text-green-700">
                     Android
@@ -84,7 +81,6 @@ export default function Features(): React.JSX.Element {
             </motion.div>
           ))}
         </motion.div>
-
       </div>
     </section>
   );
