@@ -13,6 +13,7 @@ const config: Config = {
       colors: {
         'primary-red': '#D4380D',
         'shakti-purple': '#722ED1',
+        indigo: '#5B4CE6',
         saffron: '#FA8C16',
         'forest-green': '#389E0D',
         'off-white': '#F5F5F5',

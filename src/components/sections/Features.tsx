@@ -2,74 +2,88 @@
 
 import { motion } from 'framer-motion';
 
-import { FADE_UP, STAGGER_CONTAINER, useScrollAnimation } from '@/hooks/useScrollAnimation';
+import {
+  FADE_UP,
+  STAGGER_CONTAINER,
+  useScrollAnimation,
+} from '@/hooks/useScrollAnimation';
 import { FEATURES } from '@/constants';
-
-const SUBTITLE_TEXT_CLASSES: Record<string, string> = {
-  'bg-red-50': 'text-primary-red',
-  'bg-purple-50': 'text-shakti-purple',
-  'bg-green-50': 'text-forest-green',
-  'bg-orange-50': 'text-saffron',
-  'bg-stone-50': 'text-stone',
-};
 
 export default function Features(): React.JSX.Element {
   const { ref, isInView } = useScrollAnimation();
 
   return (
-    <div className="mx-auto max-w-6xl px-6 py-24">
-      <div className="mx-auto max-w-2xl text-center">
-        <p className="text-sm font-semibold uppercase tracking-wide text-primary-red">
-          Everything You Need
-        </p>
-        <h2 className="mt-3 text-4xl font-bold text-ink">Built for real emergencies.</h2>
-        <p className="mt-4 text-lg text-stone">
-          Not just another safety app. Features that work when it matters most.
-        </p>
-      </div>
+    <section id="features" className="bg-[#f7f8fc] py-24">
+      <div className="mx-auto w-[92%] max-w-6xl">
+        {/* Section Heading */}
+        <div className="mx-auto mb-12 max-w-3xl text-center">
+          <p className="text-xs font-extrabold uppercase tracking-[1.3px] text-[#5b4ce6]">
+            Safety Toolkit
+          </p>
 
-      <motion.div
-        ref={ref}
-        variants={STAGGER_CONTAINER}
-        initial="hidden"
-        animate={isInView ? 'visible' : 'hidden'}
-        className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4"
-      >
-        {FEATURES.map((feature) => (
-          <motion.div
-            key={feature.id}
-            variants={FADE_UP}
-            whileHover={{ y: -4 }}
-            className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5 transition-shadow hover:shadow-lg"
-          >
-            <div
-              className={`flex h-12 w-12 items-center justify-center rounded-full text-2xl ${feature.bg}`}
-            >
-              {feature.icon}
-            </div>
-            <h3 className="mt-4 text-lg font-bold text-ink">{feature.title}</h3>
-            <p
-              className={`mt-1 text-sm font-semibold ${
-                SUBTITLE_TEXT_CLASSES[feature.bg] ?? 'text-primary-red'
-              }`}
-            >
-              {feature.subtitle}
-            </p>
-            <p className="mt-3 text-sm text-stone">{feature.description}</p>
+          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#101426] sm:text-4xl lg:text-5xl">
+            Everything you need when it matters most.
+          </h2>
 
-            {'platform' in feature && feature.platform && (
-              <div className="mt-4 flex flex-wrap gap-2">
-                <span className="rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-forest-green">
-                  Android ✅
-                </span>
-                <span className="rounded-full bg-stone-100 px-2 py-1 text-xs font-medium text-stone">
-                  iOS ⚠️
-                </span>
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#667085] sm:text-lg">
+            A focused set of tools for emergencies, journeys, awareness and
+            support.
+          </p>
+        </div>
+
+        {/* Features Grid */}
+        <motion.div
+          ref={ref}
+          variants={STAGGER_CONTAINER}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+          className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4"
+        >
+          {FEATURES.map((feature) => (
+            <motion.div
+              key={feature.id}
+              variants={FADE_UP}
+              whileHover={{ y: -5 }}
+              className="group rounded-3xl border border-[#e8eaf1] bg-white p-6 shadow-[0_10px_35px_rgba(16,24,40,0.04)] transition-shadow duration-300 hover:shadow-[0_20px_60px_rgba(16,20,38,0.10)]"
+            >
+              {/* Icon */}
+              <div
+                className={`mb-5 flex h-[42px] w-[42px] items-center justify-center rounded-[15px] text-xl ${feature.bg}`}
+              >
+                {feature.icon}
               </div>
-            )}
-          </motion.div>
-        ))}
-      </motion.div>
-    </div>
+
+              {/* Title */}
+              <h3 className="mb-2 font-bold text-[#101426]">
+                {feature.title}
+              </h3>
+
+              {/* Subtitle */}
+             <p className="mb-3 text-sm font-semibold text-indigo">
+                {feature.subtitle}
+              </p>
+
+              {/* Description */}
+              <p className="text-sm leading-relaxed text-[#667085]">
+                {feature.description}
+              </p>
+
+              {/* Platform Support */}
+              {'platform' in feature && feature.platform && (
+                <div className="mt-5 flex flex-wrap gap-2">
+                  <span className="rounded-full bg-green-50 px-3 py-1.5 text-xs font-semibold text-green-700">
+                    Android
+                  </span>
+
+                  <span className="rounded-full bg-stone-100 px-3 py-1.5 text-xs font-semibold text-stone-600">
+                    iOS
+                  </span>
+                </div>
+              )}
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
   );
 }
