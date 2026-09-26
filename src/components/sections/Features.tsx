@@ -59,7 +59,7 @@ export default function Features(): React.JSX.Element {
               </h3>
 
               {/* Subtitle */}
-              <p className="mb-3 text-sm font-semibold text-[#5b4ce6]">
+             <p className="mb-3 text-sm font-semibold text-indigo">
                 {feature.subtitle}
               </p>
 
