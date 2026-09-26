@@ -20,12 +20,8 @@ export default function HowItWorks(): React.JSX.Element {
   const { ref, isInView } = useScrollAnimation();
 
   return (
-    <section
-      id="how-it-works"
-      className="bg-[#0b1020] py-24 text-white"
-    >
+    <section id="how-it-works" className="bg-[#0b1020] py-24 text-white">
       <div className="mx-auto w-[92%] max-w-6xl">
-
         {/* Section Heading */}
         <div className="mb-12 max-w-3xl">
           <p className="text-xs font-extrabold uppercase tracking-[1.3px] text-[#a59aff]">
@@ -73,7 +69,6 @@ export default function HowItWorks(): React.JSX.Element {
             </motion.div>
           ))}
         </motion.div>
-
       </div>
     </section>
   );
