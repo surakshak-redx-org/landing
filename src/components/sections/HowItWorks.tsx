@@ -10,10 +10,10 @@ import {
 import { HOW_IT_WORKS } from '@/constants';
 
 const STEP_COLOR_CLASSES = [
-  'text-[#a59aff]',
-  'text-[#a59aff]',
-  'text-[#a59aff]',
-  'text-[#a59aff]',
+  'text-indigo-light',
+  'text-indigo-light',
+  'text-indigo-light',
+  'text-indigo-light',
 ] as const;
 
 export default function HowItWorks(): React.JSX.Element {
