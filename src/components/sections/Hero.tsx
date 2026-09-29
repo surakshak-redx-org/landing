@@ -40,20 +40,23 @@ function DownloadButton({
   label: string;
 }): React.JSX.Element {
   const isPlaceholder = href === '#';
+
   return (
     <div className="relative">
       <a
         href={href}
         className={cn(
-          'inline-flex items-center justify-center gap-2 rounded-full border border-white/20',
-          'bg-white/10 px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-white/20',
+          'inline-flex items-center justify-center gap-2 rounded-full border border-violet-200',
+          'bg-white px-6 py-3 text-base font-semibold text-slate-800 shadow-sm transition-all',
+          'hover:-translate-y-0.5 hover:border-violet-300 hover:bg-violet-50 hover:shadow-md',
         )}
       >
         {icon}
         {label}
       </a>
+
       {isPlaceholder && (
-        <span className="absolute -top-2 -right-2 rounded-full bg-saffron px-2 py-0.5 text-[10px] font-bold text-near-black">
+        <span className="absolute -right-2 -top-2 rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-bold text-amber-800">
           Coming Soon
         </span>
       )}
@@ -75,37 +78,61 @@ export default function Hero(): React.JSX.Element {
   }
 
   return (
-    <section className="bg-gradient-hero relative overflow-hidden pt-32 pb-20">
+    <section className="relative overflow-hidden bg-gradient-to-br from-white via-violet-50 to-indigo-100/70 pt-32 pb-20">
+      {/* Soft lavender background glow */}
       <div
-        className="pointer-events-none absolute inset-0 flex items-center justify-center text-[40rem] text-white/[0.02]"
+        className="pointer-events-none absolute -left-40 top-20 h-96 w-96 rounded-full bg-violet-200/40 blur-[100px]"
+        aria-hidden="true"
+      />
+
+      <div
+        className="pointer-events-none absolute -right-32 top-40 h-[30rem] w-[30rem] rounded-full bg-indigo-200/40 blur-[120px]"
+        aria-hidden="true"
+      />
+
+      <div
+        className="pointer-events-none absolute inset-0 flex items-center justify-center text-[40rem] text-indigo-900/[0.015]"
         aria-hidden="true"
       >
         🛡️
       </div>
 
-      <div className="relative mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 px-6 lg:grid-cols-2">
+      <div className="relative mx-auto grid max-w-6xl grid-cols-1 items-center gap-16 px-6 lg:grid-cols-2">
+        {/* Hero text */}
         <div>
-          <Badge variant="red" className="shimmer-bg mb-6 border-white/20 bg-white/5 text-white">
+          <Badge
+            variant="red"
+            className="mb-6 border border-violet-200 bg-white/80 text-indigo-800 shadow-sm"
+          >
             🛡️ Women&apos;s Safety App
           </Badge>
 
-          <h1 className="text-5xl font-bold leading-tight sm:text-6xl">
-            <span className="block font-devanagari text-white">हर कदम,</span>
-            <span className="text-gradient-red block">Surakshit.</span>
+          <h1 className="text-5xl font-bold leading-tight text-slate-900 sm:text-6xl">
+            <span className="block font-devanagari text-slate-900">
+              हर कदम,
+            </span>
+            <span className="block text-indigo-600">
+              Surakshit.
+            </span>
           </h1>
-          <p className="mt-2 text-xl text-stone-400 sm:text-2xl">Every Step, Protected.</p>
 
-          <p className="mt-6 max-w-lg text-lg text-stone-400">
+          <p className="mt-2 text-xl text-slate-800 sm:text-2xl">
+            Every Step, Protected.
+          </p>
+
+          <p className="mt-6 max-w-lg text-lg leading-relaxed text-slate-600">
             India&apos;s emergency safety app. Triple-tap SOS, live location sharing, and community
             support — in English, हिन्दी, and मराठी.
           </p>
 
+          {/* Download buttons */}
           <div className="mt-8 flex flex-wrap gap-4">
             <DownloadButton
               href={SITE.playStoreUrl}
               icon={<GooglePlayIcon />}
               label="Get it on Google Play"
             />
+
             <DownloadButton
               href={SITE.appStoreUrl}
               icon={<AppleIcon />}
@@ -113,26 +140,29 @@ export default function Hero(): React.JSX.Element {
             />
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-stone-400">
+          {/* Trust indicators */}
+          <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-sm text-slate-600">
             {TRUST_ITEMS.map((item) => (
               <span key={item} className="flex items-center gap-1.5">
-                <span className="text-forest-green">✓</span>
+                <span className="font-bold text-emerald-600">✓</span>
                 {item}
               </span>
             ))}
           </div>
 
-          <div className="mt-8 border-t border-white/10 pt-6">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-stone-500">
+          {/* Quick dial */}
+          <div className="mt-8 border-t border-violet-200 pt-6">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-500">
               Quick dial:
             </p>
+
             <div className="flex flex-wrap gap-3">
               {QUICK_DIAL_NUMBERS.map((number) => (
                 <button
                   key={number}
                   type="button"
                   onClick={(): void => void handleCopy(number)}
-                  className="glass rounded-full px-4 py-2 text-sm font-bold text-white transition-colors hover:border-primary-red"
+                  className="rounded-full border border-violet-200 bg-white/80 px-4 py-2 text-sm font-bold text-slate-800 shadow-sm transition-all hover:border-violet-400 hover:bg-violet-100"
                 >
                   {copiedNumber === number ? 'Copied!' : number}
                 </button>
@@ -141,51 +171,110 @@ export default function Hero(): React.JSX.Element {
           </div>
         </div>
 
-        <div className="relative hidden lg:block">
+        {/* Light phone mockup */}
+        <div className="relative mx-auto w-full max-w-sm lg:max-w-none">
+          {/* Lavender glow behind phone */}
           <div
-            className="absolute inset-0 -z-10 rounded-full bg-primary-red/20 blur-[100px]"
+            className="absolute inset-0 -z-10 rounded-full bg-violet-300/40 blur-[100px]"
             aria-hidden="true"
           />
+
           <motion.div
             animate={{ y: [0, -12, 0] }}
             transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-            className="relative mx-auto w-72 rounded-[3rem] border-4 border-white/20 bg-near-black p-4"
+            className="relative mx-auto w-72 rounded-[3rem] border-[5px] border-slate-800 bg-slate-900 p-2 shadow-2xl shadow-indigo-900/20 sm:w-80"
           >
-            <div className="flex items-center justify-between px-2 text-xs text-stone-400">
-              <span>9:41</span>
-              <div className="flex items-center gap-1">
-                <span className="text-amber-500">🔋 35%</span>
-                <span>📶</span>
-              </div>
-            </div>
+            {/* Phone screen */}
+            <div className="relative overflow-hidden rounded-[2.4rem] bg-gradient-to-br from-white via-violet-50 to-indigo-50 px-4 pb-5 pt-3">
+              {/* Phone notch */}
+              <div className="absolute left-1/2 top-0 h-6 w-24 -translate-x-1/2 rounded-b-2xl bg-slate-900" />
 
-            <div className="mt-8 flex flex-col items-center gap-4 py-16">
-              <div className="relative flex h-32 w-32 items-center justify-center">
-                <span className="absolute inset-0 animate-pulse-ring rounded-full bg-primary-red/40" />
-                <span className="relative flex h-24 w-24 items-center justify-center rounded-full bg-primary-red text-2xl font-bold text-white">
-                  SOS
+              {/* Status bar */}
+              <div className="flex items-center justify-between px-2 pt-1 text-[11px] font-semibold text-slate-700">
+                <span>9:41</span>
+                <div className="flex items-center gap-1.5">
+                  <span aria-label="Mobile signal">▂▄▆</span>
+                  <span aria-label="Wi-Fi">◉</span>
+                  <span aria-label="Battery">▰</span>
+                </div>
+              </div>
+
+              {/* App header */}
+              <div className="mt-7 flex items-center justify-between px-1">
+                <span className="text-base font-bold text-slate-900">
+                  Surakshak
+                </span>
+                <span className="text-sm text-slate-500">⌁</span>
+              </div>
+
+              {/* Protected status */}
+              <div className="mt-5 flex items-center gap-2 rounded-2xl border border-violet-100 bg-violet-100/80 px-3 py-3 text-[11px] text-slate-700">
+                <span className="h-2 w-2 rounded-full bg-indigo-600" />
+                <span>
+                  Safety status:{' '}
+                  <span className="font-semibold text-indigo-700">Protected</span>
                 </span>
               </div>
-              <p className="text-xs text-stone-400">Triple tap or shake</p>
+
+              {/* SOS button */}
+              <div className="mt-7 flex flex-col items-center">
+                <div className="relative flex h-40 w-40 items-center justify-center">
+                  <span className="absolute inset-0 animate-pulse-ring rounded-full bg-rose-400/15" />
+
+                  <span className="absolute inset-3 rounded-full bg-rose-200/40" />
+
+                  <span className="relative flex h-32 w-32 items-center justify-center rounded-full bg-gradient-to-br from-rose-500 to-red-600 text-3xl font-bold text-white shadow-xl shadow-rose-500/25">
+                    SOS
+                  </span>
+                </div>
+
+                <p className="mt-3 text-[11px] text-slate-500">
+                  Triple tap or shake
+                </p>
+              </div>
+
+              {/* Emergency contact: Mom */}
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6, duration: 0.5 }}
+                className="mt-5 flex items-center justify-between rounded-2xl border border-violet-100 bg-white/90 px-4 py-4 shadow-sm"
+              >
+                <div>
+                  <p className="text-sm font-semibold text-slate-800">
+                    Mom
+                  </p>
+                  <p className="mt-1 text-[11px] text-slate-500">
+                    Emergency Contact
+                  </p>
+                </div>
+
+                <span className="text-base font-bold text-emerald-600">
+                  ✓
+                </span>
+              </motion.div>
+
+              {/* Live location */}
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.9, duration: 0.5 }}
+                className="mt-3 flex items-center justify-between rounded-2xl border border-violet-100 bg-white/90 px-4 py-4 shadow-sm"
+              >
+                <div>
+                  <p className="text-sm font-semibold text-slate-800">
+                    Live Location
+                  </p>
+                  <p className="mt-1 text-[11px] text-slate-500">
+                    Ready to share
+                  </p>
+                </div>
+
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-violet-100 text-lg text-indigo-600">
+                  📍
+                </span>
+              </motion.div>
             </div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.6, duration: 0.5 }}
-              className="glass absolute -right-8 top-16 rounded-xl px-3 py-2 text-xs text-white shadow-lg"
-            >
-              📍 Location shared with 3 contacts
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 1, duration: 0.5 }}
-              className="glass absolute -left-8 bottom-16 rounded-xl px-3 py-2 text-xs text-white shadow-lg"
-            >
-              ✅ SOS alert sent — 2.3s
-            </motion.div>
           </motion.div>
         </div>
       </div>
