@@ -26,6 +26,17 @@ export default function Navbar(): React.JSX.Element {
     return (): void => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return (): void => {
+      document.body.style.overflow = '';
+    };
+  }, [menuOpen]);
+
   return (
     <header
       className={`fixed top-0 z-50 w-full transition-all duration-300 ${
@@ -61,6 +72,7 @@ export default function Navbar(): React.JSX.Element {
           className="text-white md:hidden"
           onClick={(): void => setMenuOpen((prev) => !prev)}
           aria-label="Toggle menu"
+          aria-expanded={menuOpen}
         >
           {menuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -72,7 +84,7 @@ export default function Navbar(): React.JSX.Element {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="overflow-hidden glass border-t border-white/10 md:hidden"
+            className="overflow-hidden bg-near-black border-t border-white/10 md:hidden"
           >
             <div className="flex flex-col gap-4 px-6 py-4">
               {NAV_LINKS.map((link) => (
