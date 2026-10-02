@@ -18,15 +18,11 @@ export default function Home(): React.JSX.Element {
       <Hero />
       <EmergencyStrip />
 
-      <section id="features">
-        <Features />
-      </section>
+      <Features />
 
       <PlatformComparison />
 
-      <section id="how-it-works">
-        <HowItWorks />
-      </section>
+      <HowItWorks />
 
       <Languages />
       <OfflineCapabilities />
