@@ -1,4 +1,17 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: 'Contact / Support',
+  description: 'Get help with Surakshak, report an issue, or send feedback to the Surakshak team.',
+  alternates: { canonical: '/contact' },
+  openGraph: {
+    title: 'Contact / Support — Surakshak',
+    description:
+      'Get help with Surakshak, report an issue, or send feedback to the Surakshak team.',
+    url: '/contact',
+  },
+};
 
 export default function ContactPage(): React.JSX.Element {
   return (
@@ -12,17 +25,13 @@ export default function ContactPage(): React.JSX.Element {
         </Link>
 
         <div className="mt-10">
-          <p className="text-sm font-semibold uppercase tracking-wider text-primary-red">
-            Support
-          </p>
+          <p className="text-sm font-semibold uppercase tracking-wider text-primary-red">Support</p>
 
-          <h1 className="mt-3 text-4xl font-bold sm:text-5xl">
-            Contact / Support
-          </h1>
+          <h1 className="mt-3 text-4xl font-bold sm:text-5xl">Contact / Support</h1>
 
           <p className="mt-5 max-w-2xl text-lg leading-8 text-stone-400">
-            Need help with Surakshak, want to report an issue, or have feedback?
-            We&apos;re here to help.
+            Need help with Surakshak, want to report an issue, or have feedback? We&apos;re here to
+            help.
           </p>
         </div>
 
@@ -31,8 +40,8 @@ export default function ContactPage(): React.JSX.Element {
             <h2 className="text-lg font-semibold">General Support</h2>
 
             <p className="mt-2 text-sm leading-6 text-stone-400">
-              For questions about the Surakshak platform, features, accessibility,
-              or general assistance.
+              For questions about the Surakshak platform, features, accessibility, or general
+              assistance.
             </p>
 
             <a
@@ -47,8 +56,8 @@ export default function ContactPage(): React.JSX.Element {
             <h2 className="text-lg font-semibold">Report a Problem</h2>
 
             <p className="mt-2 text-sm leading-6 text-stone-400">
-              Found a technical issue, incorrect information, or a broken feature?
-              Please report it so the team can investigate.
+              Found a technical issue, incorrect information, or a broken feature? Please report it
+              so the team can investigate.
             </p>
 
             <Link
@@ -64,13 +73,12 @@ export default function ContactPage(): React.JSX.Element {
           <h2 className="text-lg font-semibold">Emergency</h2>
 
           <p className="mt-2 text-sm leading-6 text-stone-400">
-            Surakshak is a safety-support platform. It does not replace police,
-            ambulance, fire, or other emergency services.
+            Surakshak is a safety-support platform. It does not replace police, ambulance, fire, or
+            other emergency services.
           </p>
 
           <p className="mt-4 text-sm font-semibold text-white">
-            In an immediate emergency, contact the appropriate emergency service
-            directly.
+            In an immediate emergency, contact the appropriate emergency service directly.
           </p>
 
           <div className="mt-5 flex flex-wrap gap-3">

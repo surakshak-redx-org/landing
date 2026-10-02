@@ -1,3 +1,4 @@
+import { DownloadButtons } from '@/components/ui/DownloadButton';
 import { SITE } from '@/constants';
 
 export default function CTA(): React.JSX.Element {
@@ -11,13 +12,15 @@ export default function CTA(): React.JSX.Element {
         </h2>
 
         <p className="mt-4 text-lg text-white/80">
-          Learn more about Surakshak and stay informed about safety resources.
+          Download Surakshak — free, no ads, works offline.
         </p>
 
-        <div className="mt-8 flex flex-wrap justify-center gap-4">
+        <DownloadButtons variant="solid" className="mt-8 justify-center" />
+
+        <div className="mt-6 flex flex-wrap justify-center gap-4">
           <a
             href="/contact"
-            className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-base font-semibold text-primary-red transition-transform hover:scale-[1.02]"
+            className="inline-flex items-center justify-center rounded-full border border-white/30 px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-white/10"
           >
             Contact / Support
           </a>

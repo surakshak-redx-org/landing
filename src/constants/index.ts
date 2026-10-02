@@ -7,8 +7,10 @@ export const SITE = {
     "Women's safety app for India. Emergency SOS, live location sharing, " +
     'community support, and legal information — in English, Hindi, and Marathi.',
   url: 'https://surakshak.app',
-githubUrl: 'https://github.com/surakshak-redx-org',
-clubName: 'REDX Club',
+  playStoreUrl: '#', // placeholder until account is ready
+  appStoreUrl: '#', // placeholder until account is ready
+  githubUrl: 'https://github.com/surakshak-redx-org',
+  clubName: 'REDX Club',
   collegeName: 'K.J. Somaiya Institute of Technology',
 } as const;
 

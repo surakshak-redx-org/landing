@@ -1,4 +1,17 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: 'Report a Problem',
+  description: 'Report a technical issue, incorrect information, or a broken feature in Surakshak.',
+  alternates: { canonical: '/report-problem' },
+  openGraph: {
+    title: 'Report a Problem — Surakshak',
+    description:
+      'Report a technical issue, incorrect information, or a broken feature in Surakshak.',
+    url: '/report-problem',
+  },
+};
 
 export default function ReportProblemPage(): React.JSX.Element {
   return (
@@ -12,17 +25,13 @@ export default function ReportProblemPage(): React.JSX.Element {
         </Link>
 
         <div className="mt-10">
-          <p className="text-sm font-semibold uppercase tracking-wider text-primary-red">
-            Support
-          </p>
+          <p className="text-sm font-semibold uppercase tracking-wider text-primary-red">Support</p>
 
-          <h1 className="mt-3 text-4xl font-bold sm:text-5xl">
-            Report a Problem
-          </h1>
+          <h1 className="mt-3 text-4xl font-bold sm:text-5xl">Report a Problem</h1>
 
           <p className="mt-5 max-w-2xl text-lg leading-8 text-stone-400">
-            Found a technical issue, incorrect information, or a broken feature?
-            Let the Surakshak team know so it can be reviewed.
+            Found a technical issue, incorrect information, or a broken feature? Let the Surakshak
+            team know so it can be reviewed.
           </p>
         </div>
 
@@ -37,8 +46,8 @@ export default function ReportProblemPage(): React.JSX.Element {
           </ul>
 
           <p className="mt-6 text-sm leading-6 text-stone-400">
-            Please include a short description of the problem, the page where
-            it occurred, and any relevant screenshots or details.
+            Please include a short description of the problem, the page where it occurred, and any
+            relevant screenshots or details.
           </p>
 
           <a
@@ -50,10 +59,7 @@ export default function ReportProblemPage(): React.JSX.Element {
         </div>
 
         <div className="mt-8">
-          <Link
-            href="/"
-            className="text-sm font-semibold text-stone-400 hover:text-white"
-          >
+          <Link href="/" className="text-sm font-semibold text-stone-400 hover:text-white">
             ← Back to Surakshak
           </Link>
         </div>

@@ -1,5 +1,3 @@
-'use client';
-
 import Link from 'next/link';
 import { SITE } from '@/constants';
 
@@ -9,7 +7,7 @@ const FOOTER_COLUMNS = [
     links: [
       { label: 'Features', href: '#features' },
       { label: 'How It Works', href: '#how-it-works' },
-      { label: 'Safety Information', href: '#safety' },
+      { label: 'Safety Information', href: '#emergency' },
     ],
   },
   {
