@@ -17,7 +17,11 @@ const notoSansDevanagari = Noto_Sans_Devanagari({
 });
 
 export const metadata: Metadata = {
-  title: 'Surakshak — Har Kadam, Surakshit',
+  metadataBase: new URL('https://surakshak.app'),
+  title: {
+    default: 'Surakshak — Har Kadam, Surakshit',
+    template: '%s — Surakshak',
+  },
   description:
     "Women's safety app for India. Emergency SOS, live location, community support, " +
     'and legal rights — in English, Hindi, and Marathi. Free to download.',
@@ -44,7 +48,7 @@ export const metadata: Metadata = {
     description: "Women's safety app for India.",
   },
   robots: { index: true, follow: true },
-  alternates: { canonical: 'https://surakshak.app' },
+  alternates: { canonical: '/' },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }): React.JSX.Element {
