@@ -165,7 +165,7 @@ export default function Hero(): React.JSX.Element {
                 delay: 1,
                 duration: 0.5,
               }}
-              className="glass absolute -left-8 bottom-16 rounded-xl px-3 py-2 text-xs text-white shadow-lg"
+              className="glass absolute -left-8 bottom-24 rounded-xl px-3 py-2 text-xs text-white shadow-lg"
             >
               🛡️ Safety tools ready
             </motion.div>
