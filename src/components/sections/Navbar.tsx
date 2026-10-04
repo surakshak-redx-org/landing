@@ -40,7 +40,7 @@ export default function Navbar(): React.JSX.Element {
   return (
     <header
       className={`fixed top-0 z-50 w-full transition-all duration-300 ${
-        scrolled ? 'glass border-b border-white/10' : 'bg-transparent'
+        scrolled ? 'navbar-scrolled' : 'bg-transparent'
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
