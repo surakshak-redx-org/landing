@@ -41,19 +41,31 @@ interface DownloadButtonProps {
 
 function DownloadButton({ href, icon, label, variant }: DownloadButtonProps): React.JSX.Element {
   const isPlaceholder = href === '#';
+
+  const sharedClassName = cn(
+    'inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-base font-semibold',
+    BUTTON_CLASSES[variant],
+    isPlaceholder && 'cursor-not-allowed opacity-90',
+  );
+
   return (
     <div className="relative">
-      <a
-        href={href}
-        aria-disabled={isPlaceholder}
-        className={cn(
-          'inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-base font-semibold',
-          BUTTON_CLASSES[variant],
-        )}
-      >
-        {icon}
-        {label}
-      </a>
+      {isPlaceholder ? (
+        <button
+          type="button"
+          disabled
+          aria-label={`${label} — coming soon`}
+          className={sharedClassName}
+        >
+          {icon}
+          {label}
+        </button>
+      ) : (
+        <a href={href} className={sharedClassName}>
+          {icon}
+          {label}
+        </a>
+      )}
       {isPlaceholder && (
         <span
           className={cn(
