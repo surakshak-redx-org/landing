@@ -56,13 +56,13 @@ export default function Hero(): React.JSX.Element {
     restDelta: 0.001,
   });
 
-  // Scale the ENTIRE landing page window from a centered small frame to 100% full screen
-  // Slightly smaller initial scale creates generous, cinematic negative space
-  const startScale = isMobile ? 0.58 : 0.41;
+  // Scale the ENTIRE landing page window from an extremely small centered frame to 100% full screen
+  // Ultra-small initial scale (0.20 desktop, 0.32 mobile) creates generous negative space
+  const startScale = isMobile ? 0.32 : 0.20;
   const scale = useTransform(smoothProgress, [0, 0.82], [startScale, 1.0]);
 
   // Rounded corners gradually flatten to square as it fills the viewport
-  const borderRadius = useTransform(smoothProgress, [0, 0.82], [28, 0]);
+  const borderRadius = useTransform(smoothProgress, [0, 0.82], [22, 0]);
 
   // Window shadow diminishes as it expands to full screen
   const shadowOpacity = useTransform(smoothProgress, [0, 0.75], [0.65, 0]);
@@ -70,12 +70,9 @@ export default function Hero(): React.JSX.Element {
   // Cinematic dark-purple background dissolves into the lavender page as it expands
   const darkBackdropOpacity = useTransform(smoothProgress, [0.55, 0.85], [1, 0]);
 
-  // Concentric signal rings in dark background fade
-  const signalRingOpacity = useTransform(smoothProgress, [0, 0.35], [0.6, 0]);
-
-  // Prompts in the dark stage fade out as scroll starts
-  const promptOpacity = useTransform(smoothProgress, [0, 0.16], [1, 0]);
-  const promptY = useTransform(smoothProgress, [0, 0.16], [0, -18]);
+  // Focal headline & scroll prompt in dark stage fade out as scroll starts
+  const focalOpacity = useTransform(smoothProgress, [0, 0.18], [1, 0]);
+  const focalY = useTransform(smoothProgress, [0, 0.18], [0, -22]);
 
   async function handleCopy(number: string): Promise<void> {
     try {
@@ -228,125 +225,75 @@ export default function Hero(): React.JSX.Element {
           style={{ opacity: darkBackdropOpacity }}
           className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_50%_45%,#39204F_0%,#2D183C_50%,#24152F_100%)]"
         >
-          {/* Subtle muted purple/pink ambient radial glow - Top Right */}
-          <div className="absolute -top-32 right-[15%] h-[550px] w-[550px] rounded-full bg-[radial-gradient(circle,rgba(193,107,155,0.18)_0%,transparent_68%)] blur-2xl" />
+          {/* Soft, layered radial gradient halos blending naturally into the deep plum background — NO rings, borders, or outlines */}
+          {/* Core warm lavender halo right behind the centered tiny preview */}
+          <div className="absolute left-1/2 top-1/2 h-[460px] w-[620px] -translate-x-1/2 -translate-y-1/2 max-w-[95vw] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(216,196,237,0.36)_0%,rgba(193,107,155,0.18)_42%,transparent_72%)] blur-2xl" />
 
-          {/* Subtle muted purple/pink ambient radial glow - Bottom Left */}
-          <div className="absolute -bottom-32 left-[12%] h-[600px] w-[600px] rounded-full bg-[radial-gradient(circle,rgba(121,84,165,0.22)_0%,transparent_70%)] blur-2xl" />
+          {/* Wide diffuse ambient blush & violet halo */}
+          <div className="absolute left-1/2 top-1/2 h-[680px] w-[900px] -translate-x-1/2 -translate-y-1/2 max-w-[98vw] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(232,164,197,0.22)_0%,rgba(121,84,165,0.14)_45%,transparent_75%)] blur-3xl" />
 
-          {/* Soft lavender halo directly behind the centered website preview */}
-          <div className="absolute left-1/2 top-1/2 h-[560px] w-[860px] -translate-x-1/2 -translate-y-1/2 max-w-[92vw] rounded-full bg-[radial-gradient(ellipse,rgba(216,196,237,0.32)_0%,rgba(193,107,155,0.14)_42%,transparent_72%)] blur-3xl" />
+          {/* Ambient top light pool */}
+          <div className="absolute -top-32 right-[18%] h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle,rgba(193,107,155,0.16)_0%,transparent_68%)] blur-3xl" />
+
+          {/* Ambient bottom depth */}
+          <div className="absolute -bottom-32 left-[15%] h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle,rgba(121,84,165,0.20)_0%,transparent_70%)] blur-3xl" />
         </motion.div>
 
-        {/* Extremely subtle concentric rings adding quiet atmospheric depth */}
+        {/* MAIN FOCAL POINT: Three balanced, centered lines */}
         <motion.div
-          aria-hidden="true"
-          style={{ opacity: signalRingOpacity }}
-          className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center"
+          style={{ opacity: focalOpacity, y: focalY }}
+          className="pointer-events-none absolute inset-x-0 top-8 sm:top-10 md:top-12 lg:top-14 z-30 mx-auto w-full px-6 text-center"
         >
-          <svg
-            viewBox="0 0 600 600"
-            fill="none"
-            className="h-[520px] w-[520px] sm:h-[620px] sm:w-[620px]"
-          >
-            <circle
-              cx="300"
-              cy="300"
-              r="170"
-              stroke="#E8A4C5"
-              strokeWidth="0.75"
-              strokeDasharray="3 8"
-              className="opacity-15"
-            />
-            <circle
-              cx="300"
-              cy="300"
-              r="230"
-              stroke="#D9C4F0"
-              strokeWidth="0.75"
-              strokeDasharray="4 9"
-              className="opacity-12"
-            />
-            <circle
-              cx="300"
-              cy="300"
-              r="290"
-              stroke="#7954A5"
-              strokeWidth="0.75"
-              strokeDasharray="4 10"
-              className="opacity-10"
-            />
-          </svg>
-        </motion.div>
-
-        {/* Custom SVG Typography: “YOUR WORLD. YOUR JOURNEY. YOUR SAFETY.” */}
-        <motion.div
-          style={{ opacity: promptOpacity, y: promptY }}
-          className="pointer-events-none absolute top-6 z-30 mx-auto w-full px-4 text-center sm:top-8 md:top-10"
-        >
-          <svg
-            viewBox="0 0 840 40"
-            fill="none"
-            className="mx-auto h-6 sm:h-7 md:h-8 w-auto max-w-[92vw] overflow-visible"
-          >
-            <defs>
-              <linearGradient
-                id="hero-svg-tagline-grad"
-                x1="0%"
-                y1="0%"
-                x2="100%"
-                y2="0%"
-              >
-                <stop offset="0%" stopColor="#EDE3F8" />
-                <stop offset="35%" stopColor="#E8A4C5" />
-                <stop offset="65%" stopColor="#D9C4F0" />
-                <stop offset="100%" stopColor="#EDE3F8" />
-              </linearGradient>
-              <filter
-                id="hero-svg-tagline-glow"
-                x="-20%"
-                y="-20%"
-                width="140%"
-                height="140%"
-              >
-                <feGaussianBlur stdDeviation="2.5" result="blur" />
-                <feComposite in="SourceGraphic" in2="blur" operator="over" />
-              </filter>
-            </defs>
-            <text
-              x="420"
-              y="26"
-              textAnchor="middle"
-              fill="url(#hero-svg-tagline-grad)"
-              filter="url(#hero-svg-tagline-glow)"
-              className="text-[12px] sm:text-[13px] md:text-[14px] font-bold tracking-[0.38em] uppercase select-none"
-              style={{ fontFamily: 'var(--font-inter), sans-serif' }}
-            >
-              YOUR WORLD. YOUR JOURNEY. YOUR SAFETY.
-            </text>
-          </svg>
-        </motion.div>
-
-        {/* Refined “Scroll to enter your world ↓” Prompt */}
-        <motion.div
-          style={{ opacity: promptOpacity }}
-          className="pointer-events-none absolute bottom-6 z-30 flex items-center justify-center sm:bottom-8"
-        >
-          <div className="flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.04] px-5 py-2 text-xs font-medium tracking-wide text-[#E8D4F5]/85 shadow-lg shadow-black/20 backdrop-blur-md transition-colors">
-            <span>Scroll to enter your world</span>
-            <span className="animate-bounce text-[#E8A4C5]" aria-hidden="true">
-              ↓
+          <h2 className="mx-auto flex flex-col items-center justify-center gap-1 sm:gap-1.5 md:gap-2 text-2xl font-black uppercase leading-[1.06] tracking-[0.08em] sm:text-4xl sm:tracking-[0.10em] md:text-5xl md:tracking-[0.12em] lg:text-6xl">
+            <span className="bg-gradient-to-r from-[#FAF7FF] via-[#E8A4C5] to-[#D9C4F0] bg-clip-text text-transparent drop-shadow-[0_0_36px_rgba(232,164,197,0.4)]">
+              YOUR WORLD.
             </span>
-          </div>
+            <span className="bg-gradient-to-r from-[#FAF7FF] via-[#E8A4C5] to-[#D9C4F0] bg-clip-text text-transparent drop-shadow-[0_0_36px_rgba(232,164,197,0.4)]">
+              YOUR JOURNEY.
+            </span>
+            <span className="bg-gradient-to-r from-[#FAF7FF] via-[#E8A4C5] to-[#D9C4F0] bg-clip-text text-transparent drop-shadow-[0_0_36px_rgba(232,164,197,0.4)]">
+              YOUR SAFETY.
+            </span>
+          </h2>
         </motion.div>
 
-        {/* THE ENTIRE WEBPAGE WINDOW (Expanding smoothly from small centered frame to full viewport) */}
+        {/* Refined “Scroll to enter your world” Prompt with Animated Custom SVG Arrow (No pill, no emojis, no borders) */}
+        <motion.div
+          style={{ opacity: focalOpacity }}
+          className="pointer-events-none absolute inset-x-0 bottom-7 sm:bottom-9 z-30 flex flex-col items-center justify-center gap-2 text-center"
+        >
+          <span className="text-xs sm:text-sm font-medium uppercase tracking-[0.18em] text-[#E8D4F5]/80 select-none">
+            Scroll to enter your world
+          </span>
+          <motion.svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.75"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="text-[#E8A4C5]/85"
+            animate={{ y: [0, 4, 0] }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
+            aria-hidden="true"
+          >
+            <path d="M12 5v14M19 12l-7 7-7-7" />
+          </motion.svg>
+        </motion.div>
+
+        {/* THE ENTIRE WEBPAGE WINDOW (Expanding smoothly from tiny centered frame to full viewport) */}
         <motion.div
           style={{
             scale,
             borderRadius,
           }}
-          className="relative z-10 h-screen w-screen origin-center overflow-hidden bg-gradient-to-br from-[#FBF9FF] via-[#FDF4FB] to-[#F8E4F0] shadow-2xl ring-1 ring-white/10"
+          className="relative z-10 h-screen w-screen origin-center overflow-hidden bg-gradient-to-br from-[#FBF9FF] via-[#FDF4FB] to-[#F8E4F0] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.5)]"
         >
           {/* WINDOW INTERNAL NAVBAR (Exactly identical to the existing Navbar) */}
           <header className="absolute inset-x-0 top-0 z-50 w-full border-b border-[#7954A5]/10 bg-[#FBF9FF]/90 backdrop-blur-md">
