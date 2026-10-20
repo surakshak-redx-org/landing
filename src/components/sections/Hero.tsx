@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 
@@ -8,7 +9,12 @@ import { DownloadButtons } from '@/components/ui/DownloadButton';
 
 const QUICK_DIAL_NUMBERS = ['112', '100', '108', '1091'] as const;
 
-const TRUST_ITEMS = ['Free forever', 'No ads', 'Works offline', '3 languages'] as const;
+const TRUST_ITEMS = [
+  'Free forever',
+  'No ads',
+  'Works offline',
+  '3 languages',
+] as const;
 
 export default function Hero(): React.JSX.Element {
   const [copiedNumber, setCopiedNumber] = useState<string | null>(null);
@@ -27,149 +33,128 @@ export default function Hero(): React.JSX.Element {
   }
 
   return (
-    <section className="bg-gradient-hero relative overflow-hidden pt-32 pb-20">
-      {/* Decorative background shield */}
+    <section className="relative overflow-hidden bg-gradient-to-br from-[#FBF9FF] via-[#FDF4FB] to-[#F8E4F0] pt-32 pb-12 sm:pt-36 sm:pb-16 lg:min-h-[calc(100svh-5rem)] lg:pt-28 lg:pb-8">
+      {/* Ambient background glow */}
       <div
-        className="pointer-events-none absolute inset-0 flex items-center justify-center text-[40rem] text-white/[0.02]"
         aria-hidden="true"
-      >
-        🛡️
-      </div>
+        className="pointer-events-none absolute -top-24 right-1/4 h-96 w-96 rounded-full bg-[#EDE3F8]/60 blur-3xl"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute top-40 right-10 h-72 w-72 rounded-full bg-[#F8E4F0]/60 blur-3xl"
+      />
 
-      <div className="relative mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 px-6 lg:grid-cols-2">
-        {/* LEFT CONTENT */}
-        <div>
-          <Badge variant="red" className="shimmer-bg mb-6 border-white/20 bg-white/5 text-white">
-            🛡️ Women&apos;s Safety Platform
-          </Badge>
+      <div className="relative mx-auto w-[90%] max-w-6xl">
+        <div className="grid items-center gap-6 lg:grid-cols-[1fr_1fr] lg:gap-4">
+          {/* LEFT CONTENT */}
+          <div>
+            <Badge
+              variant="purple"
+              className="mb-6 border-[#7954A5]/20 bg-[#F0E8FA] text-xs font-semibold text-[#7954A5]"
+            >
+              A Women&apos;s Safety Platform
+            </Badge>
 
-          <h1 className="text-5xl font-bold leading-tight sm:text-6xl">
-            <span className="block font-devanagari text-white">हर कदम,</span>
-
-            <span className="text-gradient-red block">Surakshit.</span>
-          </h1>
-
-          <p className="mt-2 text-xl text-stone-400 sm:text-2xl">Every Step, Protected.</p>
-
-          <p className="mt-6 max-w-lg text-lg text-stone-400">
-            A women&apos;s safety platform for India with emergency SOS, live location sharing,
-            journey protection, community support, and safety information — in English, हिन्दी, and
-            मराठी.
-          </p>
-
-          <DownloadButtons variant="glass" className="mt-8" />
-
-          {/* TRUST ITEMS */}
-          <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-stone-400">
-            {TRUST_ITEMS.map((item) => (
-              <span key={item} className="flex items-center gap-1.5">
-                <span className="text-forest-green" aria-hidden="true">
-                  ✓
-                </span>
-
-                {item}
+            <h1 className="max-w-xl text-5xl font-bold leading-[1.05] tracking-tight text-[#342442] sm:text-6xl lg:text-7xl">
+              <span className="block">Every step,</span>
+              <span className="block bg-gradient-to-r from-[#7954A5] via-[#C16B9B] to-[#A34E83] bg-clip-text text-transparent">
+                a safer you.
               </span>
-            ))}
-          </div>
+            </h1>
 
-          {/* QUICK EMERGENCY NUMBERS */}
-          <div className="mt-8 border-t border-white/10 pt-6">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-stone-500">
-              Emergency numbers
+            <p className="mt-5 max-w-lg text-base leading-8 text-[#796B86] sm:text-lg">
+              Trusted tools, real support, and safety information for women in
+              India — in English, Hindi, and Marathi.
             </p>
 
-            <div className="flex flex-wrap gap-3">
-              {QUICK_DIAL_NUMBERS.map((number) => (
-                <button
-                  key={number}
-                  type="button"
-                  onClick={(): void => {
-                    void handleCopy(number);
-                  }}
-                  className="glass rounded-full px-4 py-2 text-sm font-bold text-white transition-colors hover:border-primary-red"
-                  aria-label={`Copy emergency number ${number}`}
-                >
-                  {copiedNumber === number ? 'Copied!' : number}
-                </button>
+            {/* MAIN CTAs ROW */}
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <a
+                href="#get-started"
+                className="inline-flex items-center justify-center rounded-full bg-[#7954A5] px-7 py-3.5 text-base font-semibold text-white shadow-md shadow-[#7954A5]/25 transition-all hover:scale-[1.02] hover:bg-[#67438F] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7954A5] focus-visible:ring-offset-2"
+              >
+                Download the App
+                <span className="ml-2" aria-hidden="true">
+                  →
+                </span>
+              </a>
+
+              <a
+                href="#how-it-works"
+                className="inline-flex items-center justify-center rounded-full border border-[#7954A5]/20 bg-white/70 px-6 py-3.5 text-base font-semibold text-[#7954A5] shadow-sm backdrop-blur-sm transition-all hover:border-[#7954A5]/40 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7954A5] focus-visible:ring-offset-2"
+              >
+                See How It Works
+              </a>
+            </div>
+
+            {/* APP STORE BADGES (COMING SOON) */}
+            <div className="mt-5">
+              <DownloadButtons variant="glass" />
+            </div>
+
+            {/* TRUST INDICATORS */}
+            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-medium text-[#796B86] sm:text-sm">
+              {TRUST_ITEMS.map((item) => (
+                <span key={item} className="flex items-center gap-1.5">
+                  <span className="text-[#7954A5]" aria-hidden="true">
+                    ♡
+                  </span>
+                  {item}
+                </span>
               ))}
             </div>
 
-            <p className="mt-3 text-xs text-stone-500">
-              Tap a number to copy it. In an emergency, contact the appropriate emergency service
-              directly.
-            </p>
+            {/* QUICK EMERGENCY NUMBERS */}
+            <div className="mt-10 border-t border-[#7954A5]/15 pt-6">
+              <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-[#9B527E]">
+                Quick dial & copy
+              </p>
+
+              <div className="flex flex-wrap gap-2.5">
+                {QUICK_DIAL_NUMBERS.map((number) => (
+                  <button
+                    key={number}
+                    type="button"
+                    onClick={(): void => {
+                      void handleCopy(number);
+                    }}
+                    className="inline-flex items-center gap-1.5 rounded-full border border-[#7954A5]/15 bg-white/80 px-4 py-2 text-xs font-bold text-[#342442] shadow-sm transition-all hover:border-[#7954A5]/40 hover:bg-white hover:text-[#7954A5] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7954A5]"
+                    aria-label={`Copy emergency number ${number}`}
+                  >
+                    <span>📞 {number}</span>
+                    <span className="text-[10px] text-[#796B86]">
+                      {copiedNumber === number ? '✓ Copied' : 'Copy'}
+                    </span>
+                  </button>
+                ))}
+              </div>
+
+              <p className="mt-3 text-xs leading-5 text-[#796B86]">
+                Tap to copy. In an immediate emergency, call emergency services
+                directly.
+              </p>
+            </div>
           </div>
-        </div>
 
-        {/* RIGHT SIDE — APP PREVIEW */}
-        <div className="relative hidden lg:block">
-          <div
-            className="absolute inset-0 -z-10 rounded-full bg-primary-red/20 blur-[100px]"
-            aria-hidden="true"
-          />
-
-          <motion.div
-            animate={{ y: [0, -12, 0] }}
-            transition={{
-              duration: 6,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            }}
-            className="relative mx-auto w-72 rounded-[3rem] border-4 border-white/20 bg-near-black p-4"
-          >
-            {/* PHONE STATUS BAR */}
-            <div className="flex items-center justify-between px-2 text-xs text-stone-400">
-              <span>9:41</span>
-
-              <div className="flex items-center gap-1">
-                <span className="text-amber-500">🔋 35%</span>
-
-                <span aria-hidden="true">📶</span>
-              </div>
-            </div>
-
-            {/* SOS AREA */}
-            <div className="mt-8 flex flex-col items-center gap-4 py-16">
-              <div className="relative flex h-32 w-32 items-center justify-center">
-                <span
-                  className="absolute inset-0 animate-pulse-ring rounded-full bg-primary-red/40"
-                  aria-hidden="true"
-                />
-
-                <span className="relative flex h-24 w-24 items-center justify-center rounded-full bg-primary-red text-2xl font-bold text-white">
-                  SOS
-                </span>
-              </div>
-
-              <p className="text-xs text-stone-400">Triple tap or shake</p>
-            </div>
-
-            {/* LOCATION STATUS */}
+          {/* RIGHT SIDE — WOMAN & PHONE ARTWORK */}
+          <div className="relative flex justify-center lg:justify-end">
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{
-                delay: 0.6,
-                duration: 0.5,
-              }}
-              className="glass absolute -right-8 top-16 rounded-xl px-3 py-2 text-xs text-white shadow-lg"
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: 'easeOut' }}
+              className="relative mx-auto w-full max-w-[620px] lg:max-w-[700px]"
             >
-              📍 Location sharing
+              <Image
+                src="/images/surakshak-hero-fixed.png"
+                alt="Woman holding a phone displaying the Surakshak safety app"
+                width={1100}
+                height={1400}
+                priority
+                className="h-auto w-full object-contain"
+                sizes="(max-width: 1024px) 90vw, 50vw"
+              />
             </motion.div>
-
-            {/* SAFETY STATUS */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{
-                delay: 1,
-                duration: 0.5,
-              }}
-              className="glass absolute -left-8 bottom-24 rounded-xl px-3 py-2 text-xs text-white shadow-lg"
-            >
-              🛡️ Safety tools ready
-            </motion.div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

@@ -7,80 +7,126 @@ const FAQ_ITEMS = [
   {
     question: 'Is Surakshak free?',
     answer:
-      'Yes. Surakshak is completely free to download and use. There are no in-app purchases, ' +
-      'subscriptions, or ads.',
+      'Surakshak is designed to be free to use. Check the current app listing for availability and any updated terms before downloading.',
   },
   {
     question: 'Does it work without internet?',
     answer:
-      "Most core features work offline. SMS alerts use your phone's SIM card and don't need " +
-      'internet. Emergency contacts and legal information are cached locally. Location sharing ' +
-      'and community features need internet.',
+      "Some information saved on your device may remain available offline. SMS may work without mobile data when a cellular network and the required SIM or service are available. Location sharing and community features may need an internet connection.",
   },
   {
     question: 'How is my location shared?',
     answer:
-      "Your location is shared with only the specific contacts you choose. It's never shared " +
-      'publicly. You control when to start and stop sharing.',
+      'Location sharing is intended for the trusted contacts you select. Review the app permissions and sharing controls, and check that sharing has stopped when you no longer need it.',
   },
   {
     question: 'Is my data safe?',
     answer:
-      'All data is stored in Firebase (Google Cloud) with strict security rules. Only you can ' +
-      'access your own data. Community posts are moderated and anonymous posting is supported.',
+      'Surakshak uses Firebase services for data storage. How your information is protected depends on the app configuration, access rules, and the information you choose to share. Avoid sharing sensitive information unnecessarily.',
   },
   {
     question: 'Does SOS work on iPhone?',
     answer:
-      "Yes, with one difference. On iPhone, Apple's OS policy requires one tap to send an SMS " +
-      'and one tap to initiate a call — no app can bypass this. On Android, Surakshak sends SMS ' +
-      'silently with no user interaction.',
+      'Some emergency actions work differently on iPhone and Android. iOS may require you to confirm an SMS or call in a system screen, while supported Android features may allow certain actions with fewer manual steps. Check the platform comparison to understand the current limitations.',
   },
   {
     question: 'Which languages are supported?',
     answer:
-      'English, Hindi (हिन्दी), and Marathi (मराठी). SMS alerts are sent in your chosen ' +
-      'language.',
+      'The landing page currently lists English, Hindi (हिन्दी), and Marathi (मराठी). Check the app itself to confirm which screens and alert messages are available in your chosen language.',
   },
   {
     question: 'What happens when I trigger SOS?',
     answer:
-      'Surakshak starts a 5-second countdown (which you can cancel). After the countdown: SMS ' +
-      'alerts with your location are sent to all your emergency contacts, and your live ' +
-      'location starts sharing automatically.',
+      'The intended flow includes a short countdown that you can cancel, followed by emergency alerts to your configured contacts. The exact actions depend on your device, permissions, connectivity, and the app version. An alert cannot guarantee that someone receives or responds to it.',
   },
   {
     question: 'Can I use it as a guest?',
     answer:
-      'Yes — you can browse community posts, view the map, and read legal information without ' +
-      'an account. SOS and location features require signing in with your phone number.',
+      'Some information may be accessible without signing in, while personal features can require an account. Check the current app experience for which features are available to guests.',
   },
 ] as const;
 
 export default function FAQ(): React.JSX.Element {
   return (
-    <div className="mx-auto max-w-3xl px-6 py-24">
-      <h2 className="text-center text-4xl font-bold text-ink">Common questions</h2>
+    <section
+      id="faq"
+      aria-labelledby="faq-heading"
+      className="bg-[#FBF9FF] py-16 sm:py-20 lg:py-24"
+    >
+      <div className="mx-auto w-[90%] max-w-3xl">
+        <div className="mb-10 text-center sm:mb-12">
+          <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#9B527E]">
+            A little clarity goes a long way
+          </p>
 
-      <Accordion.Root type="single" collapsible className="mt-12 space-y-3">
-        {FAQ_ITEMS.map((item) => (
-          <Accordion.Item
-            key={item.question}
-            value={item.question}
-            className="overflow-hidden rounded-xl bg-white ring-1 ring-black/5"
+          <h2
+            id="faq-heading"
+            className="mt-3 text-3xl font-bold leading-tight tracking-tight text-[#342442] sm:text-4xl lg:text-5xl"
           >
-            <Accordion.Header>
-              <Accordion.Trigger className="group flex w-full items-center justify-between px-5 py-4 text-left text-sm font-semibold text-ink">
-                {item.question}
-                <ChevronDown className="h-4 w-4 shrink-0 text-stone transition-transform duration-300 group-data-[state=open]:rotate-180" />
-              </Accordion.Trigger>
-            </Accordion.Header>
-            <Accordion.Content className="overflow-hidden px-5 text-sm text-stone data-[state=open]:animate-fade-up data-[state=open]:pb-4">
-              {item.answer}
-            </Accordion.Content>
-          </Accordion.Item>
-        ))}
-      </Accordion.Root>
-    </div>
+            Questions you might have.
+          </h2>
+
+          <p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-[#796B86] sm:text-base sm:leading-8">
+            Understand how Surakshak works, what to expect, and what to check
+            before relying on its safety features.
+          </p>
+        </div>
+
+        <Accordion.Root
+          type="single"
+          collapsible
+          className="space-y-3"
+        >
+          {FAQ_ITEMS.map((item, index) => (
+            <Accordion.Item
+              key={item.question}
+              value={item.question}
+              className="group overflow-hidden rounded-2xl border border-[#7954A5]/10 bg-white shadow-[0_3px_14px_rgba(52,36,66,0.025)] transition-all duration-300 data-[state=open]:border-[#7954A5]/25 data-[state=open]:shadow-[0_8px_24px_rgba(52,36,66,0.05)]"
+            >
+              <Accordion.Header>
+                <Accordion.Trigger className="flex w-full items-center gap-4 px-5 py-5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#7954A5] sm:px-6">
+                  <span
+                    aria-hidden="true"
+                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#F0E8FA] text-xs font-bold text-[#7954A5] transition-colors group-data-[state=open]:bg-[#F9E8F1] group-data-[state=open]:text-[#9B527E]"
+                  >
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+
+                  <span className="flex-1 text-sm font-semibold leading-6 text-[#342442] sm:text-base">
+                    {item.question}
+                  </span>
+
+                  <ChevronDown
+                    aria-hidden="true"
+                    className="h-5 w-5 shrink-0 text-[#7954A5] transition-transform duration-300 group-data-[state=open]:rotate-180"
+                  />
+                </Accordion.Trigger>
+              </Accordion.Header>
+
+              <Accordion.Content className="overflow-hidden data-[state=open]:animate-fade-up">
+                <div className="px-5 pb-5 pl-[4.5rem] sm:px-6 sm:pb-6 sm:pl-[5rem]">
+                  <p className="text-sm leading-7 text-[#796B86]">
+                    {item.answer}
+                  </p>
+                </div>
+              </Accordion.Content>
+            </Accordion.Item>
+          ))}
+        </Accordion.Root>
+
+        <div className="mt-8 rounded-2xl border border-[#C16B9B]/15 bg-[#F9E8F1] px-5 py-5 sm:px-6">
+          <p className="text-sm font-bold text-[#342442]">
+            One important thing to remember
+          </p>
+
+          <p className="mt-2 text-sm leading-7 text-[#796B86]">
+            Surakshak is a tool to support safety planning and access to
+            information, not a replacement for emergency services. Test its
+            features on your device and contact local emergency services
+            directly when immediate help is needed.
+          </p>
+        </div>
+      </div>
+    </section>
   );
 }

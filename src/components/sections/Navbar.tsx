@@ -20,9 +20,12 @@ export default function Navbar(): React.JSX.Element {
 
   useEffect(() => {
     function handleScroll(): void {
-      setScrolled(window.scrollY > 80);
+      setScrolled(window.scrollY > 40);
     }
+
     window.addEventListener('scroll', handleScroll);
+    handleScroll();
+
     return (): void => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -32,6 +35,7 @@ export default function Navbar(): React.JSX.Element {
     } else {
       document.body.style.overflow = '';
     }
+
     return (): void => {
       document.body.style.overflow = '';
     };
@@ -40,21 +44,33 @@ export default function Navbar(): React.JSX.Element {
   return (
     <header
       className={`fixed top-0 z-50 w-full transition-all duration-300 ${
-        scrolled ? 'navbar-scrolled' : 'bg-transparent'
+        scrolled
+          ? 'navbar-scrolled shadow-sm'
+          : 'border-b border-[#7954A5]/10 bg-[#FBF9FF]/80'
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link href="/" className="flex items-center gap-2 text-lg font-bold text-white">
-          <span aria-hidden="true">🛡️</span>
-          Surakshak
+        <Link
+          href="/"
+          className="flex items-center gap-2 text-lg font-bold tracking-tight text-[#342442] transition-colors hover:text-[#7954A5]"
+        >
+          <span
+            className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#EDE3F8] text-lg"
+            aria-hidden="true"
+          >
+            🛡️
+          </span>
+          <span>
+            Surakshak<span className="text-[#A77BC8]">.</span>
+          </span>
         </Link>
 
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-7 md:flex">
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-white/80 transition-colors hover:text-white"
+              className="text-sm font-medium text-[#665674] transition-colors hover:text-[#7954A5]"
             >
               {link.label}
             </a>
@@ -62,44 +78,49 @@ export default function Navbar(): React.JSX.Element {
         </div>
 
         <div className="hidden md:block">
-          <Button variant="dark" size="sm">
+          <Button variant="plum" size="sm">
             Download App
           </Button>
         </div>
 
         <button
           type="button"
-          className="text-white md:hidden"
+          className="rounded-xl border border-[#7954A5]/15 bg-white/70 p-2 text-[#7954A5] transition-colors hover:bg-[#EDE3F8] md:hidden"
           onClick={(): void => setMenuOpen((prev) => !prev)}
-          aria-label="Toggle menu"
+          aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
           aria-expanded={menuOpen}
+          aria-controls="mobile-navigation"
         >
-          {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          {menuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </nav>
 
       <AnimatePresence>
         {menuOpen && (
           <motion.div
+            id="mobile-navigation"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="overflow-hidden bg-near-black border-t border-white/10 md:hidden"
+            className="overflow-hidden border-t border-[#7954A5]/10 bg-[#FBF9FF] md:hidden"
           >
-            <div className="flex flex-col gap-4 px-6 py-4">
+            <div className="flex flex-col gap-1 px-6 py-4">
               {NAV_LINKS.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-sm font-medium text-white/80 hover:text-white"
+                  className="rounded-xl px-4 py-3 text-sm font-medium text-[#665674] transition-colors hover:bg-[#EDE3F8] hover:text-[#7954A5]"
                   onClick={(): void => setMenuOpen(false)}
                 >
                   {link.label}
                 </a>
               ))}
-              <Button variant="dark" size="sm" className="w-full">
-                Download App
-              </Button>
+
+              <div className="pt-2">
+                <Button variant="plum" size="sm" className="w-full">
+                  Download App
+                </Button>
+              </div>
             </div>
           </motion.div>
         )}

@@ -4,13 +4,15 @@ import { cn } from '@/lib/utils';
 type DownloadButtonVariant = 'glass' | 'solid';
 
 const BUTTON_CLASSES: Record<DownloadButtonVariant, string> = {
-  glass: 'border border-white/20 bg-white/10 text-white transition-colors hover:bg-white/20',
-  solid: 'bg-white text-primary-red transition-transform hover:scale-[1.02]',
+  glass:
+    'border border-[#7954A5]/20 bg-white/80 text-[#342442] shadow-sm transition-all hover:border-[#7954A5]/40 hover:bg-white hover:shadow-md',
+  solid:
+    'bg-[#7954A5] text-white shadow-md shadow-[#7954A5]/20 transition-all hover:scale-[1.02] hover:bg-[#67438F]',
 };
 
 const BADGE_CLASSES: Record<DownloadButtonVariant, string> = {
-  glass: 'bg-saffron text-near-black',
-  solid: 'bg-near-black text-white',
+  glass: 'border border-[#F1D2E4] bg-[#F8E4F0] text-[#793E68]',
+  solid: 'border border-[#F1D2E4] bg-[#F8E4F0] text-[#793E68]',
 };
 
 function GooglePlayIcon(): React.JSX.Element {

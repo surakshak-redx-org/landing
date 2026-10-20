@@ -10,12 +10,14 @@ import Languages from '@/components/sections/Languages';
 import Navbar from '@/components/sections/Navbar';
 import OfflineCapabilities from '@/components/sections/OfflineCapabilities';
 import PlatformComparison from '@/components/sections/PlatformComparison';
+import Storytelling from '@/components/sections/Storytelling';
 
 export default function Home(): React.JSX.Element {
   return (
     <main>
       <Navbar />
       <Hero />
+      <Storytelling />
       <EmergencyStrip />
 
       <Features />
@@ -27,13 +29,8 @@ export default function Home(): React.JSX.Element {
       <Languages />
       <OfflineCapabilities />
 
-      <section id="about">
-        <About />
-      </section>
-
-      <section id="faq">
-        <FAQ />
-      </section>
+      <About />
+      <FAQ />
 
       <CTA />
       <Footer />

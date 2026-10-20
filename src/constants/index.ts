@@ -37,10 +37,9 @@ export const FEATURES = [
     color: '#D4380D',
     bg: 'bg-red-50',
     title: 'One-Tap SOS',
-    subtitle: 'Triple-tap or shake your phone',
+    subtitle: 'Help, even when words are hard to find',
     description:
-      'Triple-tap the SOS button or shake your phone to instantly alert all your emergency ' +
-      'contacts. On Android, SMS is sent silently in the background — no taps, no delays.',
+      'Sometimes you need help without having time to explain. Trigger SOS to alert your emergency contacts. On Android, SMS can be sent silently in the background; on iPhone, sending requires a tap.',
     platform: {
       android: 'Silent background SMS + direct call',
       ios: 'Compose sheet + pre-filled dialer',
@@ -52,10 +51,9 @@ export const FEATURES = [
     color: '#722ED1',
     bg: 'bg-purple-50',
     title: 'Live Location',
-    subtitle: 'Share for up to 8 hours',
+    subtitle: 'Let someone know where you are',
     description:
-      'Share your real-time location with trusted contacts for up to 8 hours. Works in the ' +
-      'background. Auto-notifies contacts when you start sharing.',
+      'Heading home, travelling alone, or meeting someone new? Share your real-time location with trusted contacts for up to 8 hours, so the people you choose can follow your journey.',
   },
   {
     id: 'journey',
@@ -63,10 +61,9 @@ export const FEATURES = [
     color: '#389E0D',
     bg: 'bg-green-50',
     title: 'Safe Journey',
-    subtitle: 'Auto-alert on missed check-in',
+    subtitle: 'A check-in for the unexpected',
     description:
-      "Set your destination and arrival time. If you don't check in on time, Surakshak " +
-      'automatically alerts your contacts with your last known location.',
+      'Set your destination and expected arrival time before you leave. If you miss your check-in, Surakshak can alert your contacts with your last known location.',
   },
   {
     id: 'community',
@@ -74,10 +71,9 @@ export const FEATURES = [
     color: '#FA8C16',
     bg: 'bg-orange-50',
     title: 'Community',
-    subtitle: 'Real-time city-wide safety chat',
+    subtitle: 'Looking out for one another',
     description:
-      'Connect with women in your city. Share alerts, help requests, and location warnings ' +
-      'in real time. Post anonymously when you need to.',
+      'Sometimes a local update or a helping hand makes a difference. Connect with women in your city to share safety alerts, help requests, and location warnings, with the option to post anonymously.',
   },
   {
     id: 'map',
@@ -85,10 +81,9 @@ export const FEATURES = [
     color: '#D4380D',
     bg: 'bg-red-50',
     title: 'Unsafe Area Map',
-    subtitle: 'Community-reported danger zones',
+    subtitle: 'Know what others have reported',
     description:
-      'See and report unsafe areas on a live map. Orange pins are pending reports, red pins ' +
-      'are verified. Upvote or downvote reports to keep the map accurate.',
+      'Get a better picture of places the community has flagged as unsafe. Explore reports, share your own, and vote on existing reports to help others make more informed decisions.',
   },
   {
     id: 'laws',
@@ -96,10 +91,9 @@ export const FEATURES = [
     color: '#722ED1',
     bg: 'bg-purple-50',
     title: 'Know Your Rights',
-    subtitle: "10 key women's laws — offline",
+    subtitle: 'Know where you stand',
     description:
-      'Domestic Violence Act, POSH Act, Dowry Prohibition and more — available offline. ' +
-      'Plain language. No legal jargon.',
+      'Understanding your rights should not mean decoding complicated legal language. Explore plain-language information about important women’s laws, including the Domestic Violence Act, POSH Act, and Dowry Prohibition Act, even offline.',
   },
   {
     id: 'evidence',
@@ -107,10 +101,9 @@ export const FEATURES = [
     color: '#389E0D',
     bg: 'bg-green-50',
     title: 'Silent Recording',
-    subtitle: 'Evidence you control',
+    subtitle: 'Keep control of your evidence',
     description:
-      'Record audio evidence discreetly. It uploads automatically to your secure account. ' +
-      'Share the link with emergency contacts or authorities.',
+      'When you need to document something, audio recording can help preserve what happened. Record discreetly and have the audio uploaded to your account, then choose whether to share the link with trusted contacts or authorities.',
   },
   {
     id: 'disguise',
@@ -118,10 +111,9 @@ export const FEATURES = [
     color: '#595959',
     bg: 'bg-stone-50',
     title: 'Disguise Mode',
-    subtitle: 'Looks like a calculator',
+    subtitle: 'Privacy when you need it',
     description:
-      'Enable disguise mode and Surakshak looks like a plain calculator. Enter your PIN to ' +
-      'unlock it. Stay protected without drawing attention.',
+      'There may be times when you want your safety app to be less noticeable. Disguise Mode makes Surakshak look like a calculator, with PIN access to unlock it.',
   },
 ] as const;
 

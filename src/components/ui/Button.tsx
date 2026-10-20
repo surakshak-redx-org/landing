@@ -10,6 +10,7 @@ const VARIANT_CLASSES = {
   outline: 'border-2 border-primary-red text-primary-red hover:bg-red-50',
   ghost: 'text-stone hover:text-ink',
   dark: 'bg-white/10 text-white border border-white/20 hover:bg-white/20',
+  plum: 'border border-[#7954A5] bg-[#7954A5] text-white shadow-sm shadow-[#7954A5]/20 hover:bg-[#67438F]',
 } as const;
 
 const SIZE_CLASSES = {

@@ -12,13 +12,19 @@
     scroll-behavior: smooth;
   }
 
+  body {
+    background-color: #fbf9ff;
+    color: #342442;
+  }
+
   ::selection {
-    background-color: #d4380d;
-    color: white;
+    background-color: #d9c4f0;
+    color: #342442;
   }
 }
 
 @layer utilities {
+  /* Existing gradients — preserved for sections we haven't redesigned yet */
   .text-gradient-red {
     background: linear-gradient(135deg, #d4380d 0%, #fa8c16 100%);
     -webkit-background-clip: text;
@@ -34,28 +40,45 @@
   }
 
   .bg-gradient-hero {
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a0a0a 40%, #1a0a1a 100%);
+    background: linear-gradient(
+      135deg,
+      #fbf9ff 0%,
+      #f5edfc 50%,
+      #fcecf4 100%
+    );
+  }
+
+  /* New lavender and blush palette */
+  .text-gradient-lavender {
+    background: linear-gradient(135deg, #7954a5 0%, #c16b9b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-gradient-lavender {
+    background: linear-gradient(135deg, #fbf9ff 0%, #ede3f8 55%, #f8e4f0 100%);
   }
 
   .glass {
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(121, 84, 165, 0.16);
   }
 
   .navbar-scrolled {
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    background: rgba(10, 10, 10, 0.85);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(251, 249, 255, 0.9);
+    border-bottom: 1px solid rgba(121, 84, 165, 0.14);
   }
 
   .shimmer-bg {
     background: linear-gradient(
       90deg,
       transparent 0%,
-      rgba(255, 255, 255, 0.06) 50%,
+      rgba(121, 84, 165, 0.12) 50%,
       transparent 100%
     );
     background-size: 200% 100%;
