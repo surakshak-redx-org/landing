@@ -140,3 +140,19 @@
     animation: none;
   }
 }
+
+/* Splash screen CSS failsafe */
+@keyframes splash-failsafe {
+  to {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+.splash-failsafe {
+  animation: splash-failsafe 0.3s ease 7s forwards;
+}
+
+html[data-splash='skip'] .splash-failsafe {
+  display: none;
+}

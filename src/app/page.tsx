@@ -11,29 +11,32 @@ import Navbar from '@/components/sections/Navbar';
 import OfflineCapabilities from '@/components/sections/OfflineCapabilities';
 import PlatformComparison from '@/components/sections/PlatformComparison';
 import Storytelling from '@/components/sections/Storytelling';
+import SplashProvider from '@/components/splash/SplashProvider';
 
 export default function Home(): React.JSX.Element {
   return (
-    <main>
-      <Navbar />
-      <Hero />
-      <Storytelling />
-      <EmergencyStrip />
+    <SplashProvider>
+      <main>
+        <Navbar />
+        <Hero />
+        <Storytelling />
+        <EmergencyStrip />
 
-      <Features />
+        <Features />
 
-      <PlatformComparison />
+        <PlatformComparison />
 
-      <HowItWorks />
+        <HowItWorks />
 
-      <Languages />
-      <OfflineCapabilities />
+        <Languages />
+        <OfflineCapabilities />
 
-      <About />
-      <FAQ />
+        <About />
+        <FAQ />
 
-      <CTA />
-      <Footer />
-    </main>
+        <CTA />
+        <Footer />
+      </main>
+    </SplashProvider>
   );
 }

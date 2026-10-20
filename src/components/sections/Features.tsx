@@ -1,9 +1,16 @@
 'use client';
 
+import { useRef } from 'react';
 import Image from 'next/image';
-import { motion, useReducedMotion } from 'framer-motion';
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+} from 'framer-motion';
 
 import { FEATURES } from '@/constants';
+import { JourneyConnector, JourneyRoadmap } from './JourneyLine';
 
 const FEATURE_NUMBERS = [
   '01',
@@ -69,6 +76,18 @@ const FEATURE_ACCENTS = [
 
 export default function Features(): React.JSX.Element {
   const prefersReducedMotion = useReducedMotion();
+  const featuresContainerRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress: sectionScroll } = useScroll({
+    target: featuresContainerRef,
+    offset: ['start 75%', 'end 70%'],
+  });
+
+  const smoothScroll = useSpring(sectionScroll, {
+    stiffness: 220,
+    damping: 28,
+    restDelta: 0.001,
+  });
 
   const reveal = {
     hidden: {
@@ -198,19 +217,26 @@ export default function Features(): React.JSX.Element {
           </div>
         </motion.div>
 
-        {/* Narrative transition */}
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-8 text-center font-serif text-xl italic text-[#7954A5] sm:text-2xl"
-        >
-          And for the moments when a little support matters…
-        </motion.p>
+        {/* Narrative transition & Interactive SVG Journey Roadmap */}
+        <div className="mb-12 text-center sm:mb-16">
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="font-serif text-xl italic text-[#7954A5] sm:text-2xl"
+          >
+            And for the moments when a little support matters…
+          </motion.p>
+
+          <JourneyRoadmap
+            scrollProgress={smoothScroll}
+            prefersReducedMotion={prefersReducedMotion}
+          />
+        </div>
 
         {/* FEATURE STORY */}
-        <div className="relative">
+        <div ref={featuresContainerRef} className="relative">
           <div className="grid grid-cols-1 gap-8 sm:gap-10 lg:grid-cols-2 lg:gap-x-14 lg:gap-y-16">
             {FEATURES.map((feature, index) => {
               const accent =
@@ -223,11 +249,12 @@ export default function Features(): React.JSX.Element {
               return (
                 <motion.div
                   key={feature.id}
+                  id={`chapter-${index + 1}`}
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.18 }}
                   variants={reveal}
-                  className={`relative flex flex-col ${isReversed ? 'lg:mt-16' : ''}`}
+                  className={`relative flex flex-col scroll-mt-28 ${isReversed ? 'lg:mt-16' : ''}`}
                 >
                   <motion.article
                     whileHover={
@@ -315,109 +342,14 @@ export default function Features(): React.JSX.Element {
                     />
                   </motion.article>
 
-                  {/* Individual connector to adjacent chapter */}
+                  {/* SVG Journey connector drawing with scroll percentage */}
                   {!isLast && (
-                    <>
-                      {/* Desktop connector: Left card -> Right card (anchored to card midpoints) */}
-                      {!isReversed && (
-                        <div
-                          aria-hidden="true"
-                          className="pointer-events-none absolute -right-14 top-1/2 z-20 hidden w-14 lg:block"
-                        >
-                          <svg
-                            viewBox="0 0 56 64"
-                            fill="none"
-                            className="h-16 w-14 overflow-visible"
-                          >
-                            <defs>
-                              <linearGradient
-                                id={`connector-lr-${index}`}
-                                x1="0%"
-                                y1="0%"
-                                x2="100%"
-                                y2="100%"
-                              >
-                                <stop offset="0%" stopColor="#C16B9B" />
-                                <stop offset="100%" stopColor="#7954A5" />
-                              </linearGradient>
-                            </defs>
-                            <motion.path
-                              d="M 0 0 C 28 0, 28 64, 56 64"
-                              stroke={`url(#connector-lr-${index})`}
-                              strokeWidth="1.25"
-                              strokeDasharray="3 5"
-                              strokeLinecap="round"
-                              initial={{ pathLength: 0, opacity: 0 }}
-                              whileInView={{ pathLength: 1, opacity: 0.7 }}
-                              viewport={{ once: true, amount: 0.4 }}
-                              transition={{
-                                duration: prefersReducedMotion ? 0 : 0.9,
-                                delay: prefersReducedMotion ? 0 : 0.35,
-                                ease: 'easeInOut',
-                              }}
-                            />
-                          </svg>
-                        </div>
-                      )}
-
-                      {/* Desktop connector: Right card (e.g. Ch 2) -> Next Left card (e.g. Ch 3) */}
-                      {isReversed && (
-                        <div
-                          aria-hidden="true"
-                          className="pointer-events-none absolute -bottom-16 -left-14 z-20 hidden h-16 w-14 lg:block"
-                        >
-                          <svg
-                            viewBox="0 0 56 64"
-                            fill="none"
-                            className="h-full w-full overflow-visible"
-                          >
-                            <defs>
-                              <linearGradient
-                                id={`connector-rl-${index}`}
-                                x1="100%"
-                                y1="0%"
-                                x2="0%"
-                                y2="100%"
-                              >
-                                <stop offset="0%" stopColor="#7954A5" />
-                                <stop offset="100%" stopColor="#C16B9B" />
-                              </linearGradient>
-                            </defs>
-                            <motion.path
-                              d="M 56 0 C 56 32, 0 32, 0 64"
-                              stroke={`url(#connector-rl-${index})`}
-                              strokeWidth="1.25"
-                              strokeDasharray="3 5"
-                              strokeLinecap="round"
-                              initial={{ pathLength: 0, opacity: 0 }}
-                              whileInView={{ pathLength: 1, opacity: 0.7 }}
-                              viewport={{ once: true, amount: 0.3 }}
-                              transition={{
-                                duration: prefersReducedMotion ? 0 : 0.9,
-                                delay: prefersReducedMotion ? 0 : 0.35,
-                                ease: 'easeInOut',
-                              }}
-                            />
-                          </svg>
-                        </div>
-                      )}
-
-                      {/* Mobile / Tablet vertical connector */}
-                      <motion.div
-                        initial={{ opacity: 0, scaleY: 0 }}
-                        whileInView={{ opacity: 1, scaleY: 1 }}
-                        viewport={{ once: true, amount: 0.6 }}
-                        transition={{
-                          duration: prefersReducedMotion ? 0 : 0.6,
-                          delay: prefersReducedMotion ? 0 : 0.3,
-                          ease: 'easeInOut',
-                        }}
-                        aria-hidden="true"
-                        className="pointer-events-none absolute -bottom-8 left-1/2 z-20 flex origin-top -translate-x-1/2 flex-col items-center lg:hidden"
-                      >
-                        <div className="h-8 w-[1.25px] bg-gradient-to-b from-[#C16B9B] to-[#7954A5]" />
-                      </motion.div>
-                    </>
+                    <JourneyConnector
+                      index={index}
+                      isReversed={isReversed}
+                      prefersReducedMotion={prefersReducedMotion}
+                      scrollProgress={smoothScroll}
+                    />
                   )}
                 </motion.div>
               );

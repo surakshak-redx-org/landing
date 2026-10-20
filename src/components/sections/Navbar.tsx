@@ -15,11 +15,24 @@ const NAV_LINKS = [
 
 export default function Navbar(): React.JSX.Element {
   const [scrolled, setScrolled] = useState(false);
+  const [inHeroScale, setInHeroScale] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     function handleScroll(): void {
-      setScrolled(window.scrollY > 40);
+      const scrollPos = window.scrollY;
+      setScrolled(scrollPos > 40);
+
+      const isReducedMotion =
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const hasHash = window.location.hash.length > 1;
+
+      if (isReducedMotion || hasHash) {
+        setInHeroScale(false);
+      } else {
+        // Hero scale runs for roughly the first screen height
+        setInHeroScale(scrollPos < window.innerHeight * 0.8);
+      }
     }
 
     window.addEventListener('scroll', handleScroll);
@@ -43,6 +56,10 @@ export default function Navbar(): React.JSX.Element {
   return (
     <header
       className={`fixed top-0 z-50 w-full transition-all duration-300 ${
+        inHeroScale
+          ? 'pointer-events-none -translate-y-2 opacity-0'
+          : 'pointer-events-auto translate-y-0 opacity-100'
+      } ${
         scrolled
           ? 'navbar-scrolled shadow-sm'
           : 'border-b border-[#7954A5]/10 bg-[#FBF9FF]/80'

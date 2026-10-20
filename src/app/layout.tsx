@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, Noto_Sans_Devanagari } from 'next/font/google';
 
 import './globals.css';
+import { SPLASH_BOOT_SCRIPT } from '@/components/splash/splash-boot';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -53,8 +54,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }): React.JSX.Element {
   return (
-    <html lang="en" className={`${inter.variable} ${notoSansDevanagari.variable}`}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${inter.variable} ${notoSansDevanagari.variable}`}
+    >
       <head>
+        <script dangerouslySetInnerHTML={{ __html: SPLASH_BOOT_SCRIPT }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
