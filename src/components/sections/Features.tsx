@@ -89,7 +89,7 @@ export default function Features(): React.JSX.Element {
     <section
       id="features"
       aria-labelledby="features-heading"
-      className="relative isolate scroll-mt-24 overflow-hidden bg-[#FBF9FF] py-20 sm:py-28 lg:py-32"
+      className="ambient-tech-bg relative isolate scroll-mt-24 overflow-hidden bg-[#FBF9FF] py-20 sm:py-28 lg:py-32"
     >
       {/* Soft colour washes */}
       <div
@@ -233,7 +233,15 @@ export default function Features(): React.JSX.Element {
                     whileHover={
                       prefersReducedMotion
                         ? undefined
-                        : { y: -5, transition: { duration: 0.25 } }
+                        : {
+                            y: -6,
+                            scale: 1.015,
+                            transition: {
+                              type: "spring",
+                              stiffness: 280,
+                              damping: 22,
+                            },
+                          }
                     }
                     className="group relative flex h-full min-h-[290px] flex-col overflow-hidden rounded-[2rem] border border-[#7954A5]/10 bg-white/90 p-6 shadow-[0_8px_35px_rgba(52,36,66,0.045)] transition-shadow duration-300 hover:shadow-[0_18px_48px_rgba(52,36,66,0.09)] sm:min-h-[320px] sm:p-8 lg:p-9"
                   >

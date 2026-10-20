@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { useState } from 'react';
 
 import { Badge } from '@/components/ui/Badge';
@@ -16,8 +16,49 @@ const TRUST_ITEMS = [
   '3 languages',
 ] as const;
 
+const heroEntrance = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.85,
+      ease: [0.22, 1, 0.36, 1] as const,
+    },
+  },
+};
+
+const heroImageEntrance = {
+  hidden: { opacity: 0, scale: 0.92, y: 28 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: {
+      duration: 1.2,
+      delay: 0.35,
+      ease: [0.22, 1, 0.36, 1] as const,
+    },
+  },
+};
+
 export default function Hero(): React.JSX.Element {
+  const prefersReducedMotion = useReducedMotion();
   const [copiedNumber, setCopiedNumber] = useState<string | null>(null);
+
+  const entranceVariants = prefersReducedMotion
+    ? {
+        hidden: { opacity: 0 },
+        visible: { opacity: 1, transition: { duration: 0.3 } },
+      }
+    : heroEntrance;
+
+  const imageEntranceVariants = prefersReducedMotion
+    ? {
+        hidden: { opacity: 0 },
+        visible: { opacity: 1, transition: { duration: 0.3 } },
+      }
+    : heroImageEntrance;
 
   async function handleCopy(number: string): Promise<void> {
     try {
@@ -33,21 +74,57 @@ export default function Hero(): React.JSX.Element {
   }
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-[#FBF9FF] via-[#FDF4FB] to-[#F8E4F0] pt-32 pb-12 sm:pt-36 sm:pb-16 lg:min-h-[calc(100svh-5rem)] lg:pt-28 lg:pb-8">
-      {/* Ambient background glow */}
+    <section className="ambient-tech-bg relative isolate overflow-hidden bg-gradient-to-br from-[#FBF9FF] via-[#FDF4FB] to-[#F8E4F0] pt-32 pb-12 sm:pt-36 sm:pb-16 lg:min-h-[calc(100svh-5rem)] lg:pt-28 lg:pb-8">
+      {/* Animated ambient background */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -top-24 right-1/4 h-96 w-96 rounded-full bg-[#EDE3F8]/60 blur-3xl"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute top-40 right-10 h-72 w-72 rounded-full bg-[#F8E4F0]/60 blur-3xl"
-      />
+        className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
+      >
+        <motion.div
+          className="absolute -right-24 top-16 h-80 w-80 rounded-full bg-[#EDE3F8]/80 blur-3xl"
+          animate={
+            prefersReducedMotion
+              ? undefined
+              : {
+                  x: [0, -35, 0],
+                  y: [0, 24, 0],
+                  scale: [1, 1.12, 1],
+                }
+          }
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
+
+        <motion.div
+          className="absolute -left-20 bottom-0 h-72 w-72 rounded-full bg-[#F8E4F0]/80 blur-3xl"
+          animate={
+            prefersReducedMotion
+              ? undefined
+              : {
+                  x: [0, 30, 0],
+                  y: [0, -20, 0],
+                  scale: [1, 1.08, 1],
+                }
+          }
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
+      </div>
 
       <div className="relative mx-auto w-[90%] max-w-6xl">
         <div className="grid items-center gap-6 lg:grid-cols-[1fr_1fr] lg:gap-4">
           {/* LEFT CONTENT */}
-          <div>
+          <motion.div
+            variants={entranceVariants}
+            initial="hidden"
+            animate="visible"
+          >
             <Badge
               variant="purple"
               className="mb-6 border-[#7954A5]/20 bg-[#F0E8FA] text-xs font-semibold text-[#7954A5]"
@@ -134,16 +211,74 @@ export default function Hero(): React.JSX.Element {
                 directly.
               </p>
             </div>
-          </div>
+          </motion.div>
 
           {/* RIGHT SIDE — WOMAN & PHONE ARTWORK */}
           <div className="relative flex justify-center lg:justify-end">
             <motion.div
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: 'easeOut' }}
+              variants={imageEntranceVariants}
+              initial="hidden"
+              animate="visible"
               className="relative mx-auto w-full max-w-[620px] lg:max-w-[700px]"
             >
+              {/* Ambient signal — decorative only */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-[8%] -z-0"
+              >
+                <motion.div
+                  className="absolute left-[12%] top-[18%] h-3 w-3 rounded-full bg-[#C16B9B] shadow-[0_0_24px_rgba(193,107,155,0.65)]"
+                  animate={
+                    prefersReducedMotion
+                      ? { opacity: 0.65 }
+                      : {
+                          opacity: [0.35, 1, 0.35],
+                          scale: [0.85, 1.2, 0.85],
+                        }
+                  }
+                  transition={{
+                    duration: 3.5,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                  }}
+                />
+
+                <motion.div
+                  className="absolute right-[12%] top-[38%] h-2 w-2 rounded-full bg-[#7954A5]"
+                  animate={
+                    prefersReducedMotion
+                      ? { opacity: 0.5 }
+                      : {
+                          opacity: [0.2, 0.8, 0.2],
+                          scale: [1, 1.5, 1],
+                        }
+                  }
+                  transition={{
+                    duration: 4.5,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                    delay: 0.7,
+                  }}
+                />
+
+                <motion.div
+                  className="absolute bottom-[18%] left-[22%] h-px w-16 origin-left bg-gradient-to-r from-[#C16B9B]/70 to-transparent"
+                  animate={
+                    prefersReducedMotion
+                      ? { opacity: 0.5 }
+                      : {
+                          scaleX: [0.5, 1, 0.5],
+                          opacity: [0.3, 0.8, 0.3],
+                        }
+                  }
+                  transition={{
+                    duration: 5,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                  }}
+                />
+              </div>
+
               <Image
                 src="/images/surakshak-hero-fixed.png"
                 alt="Woman holding a phone displaying the Surakshak safety app"

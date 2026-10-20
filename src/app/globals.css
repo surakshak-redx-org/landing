@@ -85,3 +85,58 @@
     animation: shimmer 2s linear infinite;
   }
 }
+
+/* Surakshak — ambient light-tech atmosphere */
+.ambient-tech-bg {
+  position: relative;
+  isolation: isolate;
+}
+
+.ambient-tech-bg::before {
+  content: "";
+  position: absolute;
+  inset: -15%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse at 18% 25%,
+      rgba(216, 196, 237, 0.48) 0%,
+      transparent 42%
+    ),
+    radial-gradient(
+      ellipse at 82% 32%,
+      rgba(248, 228, 240, 0.8) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      ellipse at 55% 85%,
+      rgba(237, 227, 248, 0.7) 0%,
+      transparent 44%
+    );
+  background-size: 140% 140%;
+  animation: surakshak-ambient-drift 18s ease-in-out infinite alternate;
+}
+
+@keyframes surakshak-ambient-drift {
+  0% {
+    transform: translate3d(-2%, -1%, 0) scale(1);
+    background-position: 0% 20%;
+  }
+
+  50% {
+    transform: translate3d(1%, 2%, 0) scale(1.035);
+    background-position: 55% 65%;
+  }
+
+  100% {
+    transform: translate3d(2%, -1%, 0) scale(1.015);
+    background-position: 100% 30%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient-tech-bg::before {
+    animation: none;
+  }
+}

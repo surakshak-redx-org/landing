@@ -74,13 +74,6 @@ export default function About(): React.JSX.Element {
                     Surakshak
                   </h3>
                 </div>
-
-                <span
-                  className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white/80 text-3xl shadow-sm"
-                  aria-hidden="true"
-                >
-                  🛡️
-                </span>
               </div>
 
               <p className="mt-4 max-w-sm text-sm leading-7 text-[#796B86]">

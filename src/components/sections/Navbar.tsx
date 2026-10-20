@@ -10,7 +10,6 @@ import { Button } from '@/components/ui/Button';
 const NAV_LINKS = [
   { href: '#features', label: 'Features' },
   { href: '#how-it-works', label: 'How it Works' },
-  { href: '#emergency', label: 'Emergency Numbers' },
   { href: '#about', label: 'About' },
 ] as const;
 
@@ -54,12 +53,6 @@ export default function Navbar(): React.JSX.Element {
           href="/"
           className="flex items-center gap-2 text-lg font-bold tracking-tight text-[#342442] transition-colors hover:text-[#7954A5]"
         >
-          <span
-            className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#EDE3F8] text-lg"
-            aria-hidden="true"
-          >
-            🛡️
-          </span>
           <span>
             Surakshak<span className="text-[#A77BC8]">.</span>
           </span>
@@ -70,7 +63,7 @@ export default function Navbar(): React.JSX.Element {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-[#665674] transition-colors hover:text-[#7954A5]"
+              className="relative text-sm font-medium text-[#796B86] transition-colors duration-200 hover:text-[#7954A5] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7954A5] focus-visible:ring-offset-4"
             >
               {link.label}
             </a>
@@ -78,9 +71,11 @@ export default function Navbar(): React.JSX.Element {
         </div>
 
         <div className="hidden md:block">
-          <Button variant="plum" size="sm">
-            Download App
-          </Button>
+          <a href="#get-started">
+            <Button variant="plum" size="sm">
+              Get the app ↗
+            </Button>
+          </a>
         </div>
 
         <button
@@ -117,9 +112,11 @@ export default function Navbar(): React.JSX.Element {
               ))}
 
               <div className="pt-2">
-                <Button variant="plum" size="sm" className="w-full">
-                  Download App
-                </Button>
+                <a href="#get-started" onClick={(): void => setMenuOpen(false)}>
+                  <Button variant="plum" size="sm" className="w-full">
+                    Get the app ↗
+                  </Button>
+                </a>
               </div>
             </div>
           </motion.div>

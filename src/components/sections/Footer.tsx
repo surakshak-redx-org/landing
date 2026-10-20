@@ -52,13 +52,6 @@ export default function Footer(): React.JSX.Element {
               href="/"
               className="inline-flex items-center gap-3 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7954A5] focus-visible:ring-offset-2"
             >
-              <span
-                className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#EDE3F8] text-2xl"
-                aria-hidden="true"
-              >
-                🛡️
-              </span>
-
               <span className="text-2xl font-bold tracking-tight text-[#342442]">
                 {SITE.name}
               </span>
