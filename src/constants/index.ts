@@ -10,7 +10,6 @@ export const SITE = {
   playStoreUrl: '#', // placeholder until account is ready
   appStoreUrl: '#', // placeholder until account is ready
   githubUrl: 'https://github.com/surakshak-redx-org',
-  instagramUrl: '#',
   clubName: 'REDX Club',
   collegeName: 'K.J. Somaiya Institute of Technology',
 } as const;
