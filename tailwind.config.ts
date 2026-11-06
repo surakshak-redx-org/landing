@@ -23,6 +23,18 @@ const config: Config = {
         stone: { ...colors.stone, DEFAULT: '#595959' },
         'near-black': '#0A0A0A',
         charcoal: '#1A1A1A',
+        // Live-tracking page theme tokens (values live in globals.css, light + dark).
+        'track-bg': 'rgb(var(--track-bg) / <alpha-value>)',
+        'track-surface': 'rgb(var(--track-surface) / <alpha-value>)',
+        'track-ink': 'rgb(var(--track-ink) / <alpha-value>)',
+        'track-muted': 'rgb(var(--track-muted) / <alpha-value>)',
+        'track-line': 'rgb(var(--track-line) / <alpha-value>)',
+        'track-warn-bg': 'rgb(var(--track-warn-bg) / <alpha-value>)',
+        'track-warn-ink': 'rgb(var(--track-warn-ink) / <alpha-value>)',
+        'track-danger-bg': 'rgb(var(--track-danger-bg) / <alpha-value>)',
+        'track-danger-ink': 'rgb(var(--track-danger-ink) / <alpha-value>)',
+        'track-ok-bg': 'rgb(var(--track-ok-bg) / <alpha-value>)',
+        'track-ok-ink': 'rgb(var(--track-ok-ink) / <alpha-value>)',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],

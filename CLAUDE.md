@@ -29,15 +29,19 @@ landing/
 │   │   ├── layout.tsx
 │   │   ├── page.tsx
 │   │   ├── sitemap.ts
+│   │   ├── track/[token]/      # private live-location page (noindex, no-store)
 │   │   └── globals.css
 │   ├── components/
 │   │   ├── sections/           # page sections (Hero, Features, FAQ, ...)
+│   │   ├── tracking/           # live-location page UI (map, sheet, states)
 │   │   └── ui/                 # shared primitives (Button, Badge)
 │   ├── constants/
 │   │   └── index.ts            # SITE config, links, copy constants
 │   ├── hooks/
-│   │   └── useScrollAnimation.ts
+│   │   ├── useScrollAnimation.ts
+│   │   └── useTracking*.ts     # polling + language hooks for /track
 │   └── lib/
+│       ├── tracking/           # pure, tested logic (poller, api, i18n, messages, dev mock)
 │       └── utils.ts
 ├── vercel.json
 ├── next.config.ts

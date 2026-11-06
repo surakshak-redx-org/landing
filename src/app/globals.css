@@ -18,6 +18,43 @@
   }
 }
 
+/*
+ * Live-tracking page theme. Colors are space-separated RGB triplets so Tailwind opacity
+ * modifiers work. Dark mode follows the OS via prefers-color-scheme, with no JS and no flash.
+ */
+@layer base {
+  .track-theme {
+    color-scheme: light dark;
+    --track-bg: 245 245 245;
+    --track-surface: 255 255 255;
+    --track-ink: 20 20 20;
+    --track-muted: 89 89 89;
+    --track-line: 224 224 224;
+    --track-warn-bg: 255 247 230;
+    --track-warn-ink: 128 72 0;
+    --track-danger-bg: 254 241 236;
+    --track-danger-ink: 158 38 6;
+    --track-ok-bg: 241 250 235;
+    --track-ok-ink: 33 100 6;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .track-theme {
+      --track-bg: 15 15 15;
+      --track-surface: 28 28 28;
+      --track-ink: 245 245 245;
+      --track-muted: 166 166 166;
+      --track-line: 58 58 58;
+      --track-warn-bg: 64 42 6;
+      --track-warn-ink: 255 200 107;
+      --track-danger-bg: 70 20 8;
+      --track-danger-ink: 255 168 144;
+      --track-ok-bg: 18 50 8;
+      --track-ok-ink: 156 224 118;
+    }
+  }
+}
+
 @layer utilities {
   .text-gradient-red {
     background: linear-gradient(135deg, #d4380d 0%, #fa8c16 100%);
